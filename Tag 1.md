@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Stufen der Wissenstreppe und Beispiel mit einem Wechselkurs
+#### 1. Stufen der Wissenstreppe und Beispiel mit einem Wechselkurs
 
 Die **Wissenstreppe** beschreibt den Prozess der Transformation von Daten zu Wissen und Kompetenz. Die Stufen in der richtigen Reihenfolge sind:
 
@@ -21,7 +21,7 @@ Die **Wissenstreppe** beschreibt den Prozess der Transformation von Daten zu Wis
 
 ---
 
-## 2. Netzwerk-Beziehungen im logischen Modell
+#### 2. Netzwerk-Beziehungen im logischen Modell
 
 Im **logischen Modell** werden Netzwerk-Beziehungen durch **relationale Tabellen** mit **Primär- und Fremdschlüsseln** abgebildet. Man verwendet:
 
@@ -34,7 +34,7 @@ Eine Tabelle **„Kunden“** ist mit einer Tabelle **„Bestellungen“** über
 
 ---
 
-## 3. Anomalien in einer Datenbasis und ihre Arten
+#### 3. Anomalien in einer Datenbasis und ihre Arten
 
 Anomalien treten auf, wenn eine Datenbank nicht gut normalisiert ist. Es gibt drei Hauptarten:
 
@@ -49,7 +49,7 @@ Anomalien treten auf, wenn eine Datenbank nicht gut normalisiert ist. Es gibt dr
 
 ---
 
-## 4. Gibt es redundante Daten? Warum?
+#### 4. Gibt es redundante Daten? Warum?
 
 Ja, **redundante Daten** existieren, wenn dieselben Informationen mehrfach in einer Datenbank gespeichert sind. Dies geschieht oft durch:
 
@@ -62,20 +62,20 @@ Redundanzen führen zu **Inkonsistenzen**, da Änderungen an einer Stelle nicht 
 
 ---
 
-## 5. Datenstrukturierung bei der Erhebung und Ablage von Daten
+#### 5. Datenstrukturierung bei der Erhebung und Ablage von Daten
 
 Es gibt zwei wesentliche Aspekte der Datenstrukturierung:
 
 1. **Inhaltliche Strukturierung** – Wie Daten logisch organisiert sind (Tabellen, Felder).  
 2. **Technische Strukturierung** – Wie Daten physisch gespeichert werden (Dateiformate, Speicherorte).
 
-### Kategorien der Strukturierung:
+##### Kategorien der Strukturierung:
 
 - **Unstrukturierte Daten** – Textdokumente, Bilder, Videos.  
 - **Semistrukturierte Daten** – JSON, XML, Log-Dateien.  
 - **Strukturierte Daten** – Tabellen, relationale Datenbanken.
 
-### Anforderungen für eine Datenbank:
+##### Anforderungen für eine Datenbank:
 
 Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. Typische Normalformen:
 
@@ -85,7 +85,7 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 
 ---
 
-## 6. Beschreibung eines Bildes mit Fachbegriffen
+#### 6. Beschreibung eines Bildes mit Fachbegriffen
 
 ![Datenbank-Tabelle mit Fachbegriffen](https://gitlab.com/ch-tbz-it/Stud/m164/-/raw/main/1.Tag/Recap/Tabelle_labelled.png)
 
