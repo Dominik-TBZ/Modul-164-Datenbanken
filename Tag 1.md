@@ -111,4 +111,5 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 3. **3NF:** 2NF + keine transitiven Abhängigkeiten  
 4. **BCNF:** Striktere 3NF (bei mehreren Schlüsselkandidaten)  
 5. **4NF/5NF:** Vermeidung komplexer Redundanzen  
- 
+
+![ERD](https://github.com/user-attachments/assets/df0569eb-92a9-419b-b638-c1c942cd46a5)
