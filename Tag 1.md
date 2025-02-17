@@ -5,8 +5,6 @@
 ### Auftrag Recap  
 🔗 [GitLab Link zum Recap](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/1.Tag/Recap/Recap.md)
 
----
-
 #### 1. Stufen der Wissenstreppe und Beispiel mit einem Wechselkurs
 
 Die **Wissenstreppe** beschreibt den Prozess der Transformation von Daten zu Wissen und Kompetenz. Die Stufen in der richtigen Reihenfolge sind:
@@ -19,8 +17,6 @@ Die **Wissenstreppe** beschreibt den Prozess der Transformation von Daten zu Wis
 6. **Handeln** – Bewusstes Anwenden von Wissen und Können, z. B. `Ich tausche Geld zum besten Zeitpunkt`.  
 7. **Kompetenz** – Nachhaltige, reflektierte Handlungskompetenz, z. B. `Ich bin Devisenhändler und treffe fundierte Entscheidungen`.
 
----
-
 #### 2. Netzwerk-Beziehungen im logischen Modell
 
 Im **logischen Modell** werden Netzwerk-Beziehungen durch **relationale Tabellen** mit **Primär- und Fremdschlüsseln** abgebildet. Man verwendet:
@@ -31,8 +27,6 @@ Im **logischen Modell** werden Netzwerk-Beziehungen durch **relationale Tabellen
 
 📌 **Beispiel:**  
 Eine Tabelle **„Kunden“** ist mit einer Tabelle **„Bestellungen“** über eine **1:n-Beziehung** verknüpft.
-
----
 
 #### 3. Anomalien in einer Datenbasis und ihre Arten
 
@@ -47,8 +41,6 @@ Anomalien treten auf, wenn eine Datenbank nicht gut normalisiert ist. Es gibt dr
 3. **Löschanomalie** – Beim Löschen eines Datensatzes gehen auch wichtige Informationen verloren.  
    *Beispiel:* Löscht man eine Bestellung, geht auch die Kundeninformation verloren.
 
----
-
 #### 4. Gibt es redundante Daten? Warum?
 
 Ja, **redundante Daten** existieren, wenn dieselben Informationen mehrfach in einer Datenbank gespeichert sind. Dies geschieht oft durch:
@@ -59,8 +51,6 @@ Ja, **redundante Daten** existieren, wenn dieselben Informationen mehrfach in ei
 
 🔴 **Problem:**  
 Redundanzen führen zu **Inkonsistenzen**, da Änderungen an einer Stelle nicht überall aktualisiert werden.
-
----
 
 #### 5. Datenstrukturierung bei der Erhebung und Ablage von Daten
 
@@ -83,8 +73,6 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 - **2. Normalform (2NF)** – Alle Nicht-Schlüssel-Attribute hängen vom gesamten Primärschlüssel ab.  
 - **3. Normalform (3NF)** – Keine transitiven Abhängigkeiten.
 
----
-
 #### 6. Beschreibung eines Bildes mit Fachbegriffen
 
 ![Datenbank-Tabelle mit Fachbegriffen](https://gitlab.com/ch-tbz-it/Stud/m164/-/raw/main/1.Tag/Recap/Tabelle_labelled.png)
@@ -96,7 +84,9 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 4️⃣ **Attributwerte (Feldwerte)**  
 5️⃣ **Primärschlüssel (MitarbeiterId)**
 
-### Auftrag Recap  
+---
+
+### Auftrag Recap Modul 162
 🔗 [GitLab Link zum Recap Modul 162](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/1.Tag)
  
 #### **Datenmodellierung (Zusammenfassung)**
