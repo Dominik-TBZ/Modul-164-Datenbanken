@@ -100,8 +100,6 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 - **Star Schema:** Optimiert für Reporting/Data Mart  
 - **Data Vault:** Erweiterbar, automatisiert, für Integration/Core DWH  
  
----
- 
 #### **Normalisierung (M162)**  
 **Ziel:**  
 - **Redundanzen & Anomalien vermeiden**  
