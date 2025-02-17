@@ -87,7 +87,8 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 
 ## 6. Beschreibung eines Bildes mit Fachbegriffen
 
-![Datenbank-Tabelle mit Fachbegriffen](<[Screenshot 2025-02-17 141930.png](https://gitlab.com/ch-tbz-it/Stud/m164/-/raw/main/1.Tag/Recap/Tabelle_labelled.png)>)
+![Datenbank-Tabelle mit Fachbegriffen](https://gitlab.com/ch-tbz-it/Stud/m164/-/raw/main/1.Tag/Recap/Tabelle_labelled.png)
+
 
 1️⃣ **Tabellenname**  
 2️⃣ **Datensätze (Tupel, Zeilen)**  
