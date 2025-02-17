@@ -98,7 +98,7 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 4. **BCNF:** Striktere 3NF (bei mehreren Schlüsselkandidaten)  
 5. **4NF/5NF:** Vermeidung komplexer Redundanzen
 
-#### **Datenmodell ERD** ####
+#### **Datenmodell ERD und Datenmodell MySQL** ####
 
 Ich habe das Datenmodell als ERD gemacht und danach in MySQL gestaltet.
 
