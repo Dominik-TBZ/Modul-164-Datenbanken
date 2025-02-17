@@ -100,4 +100,8 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 
 #### **Datenmodell ERD** ####
 
+Ich habe das Datenmodell als ERD gemacht und danach in MySQL gestaltet.
+
 ![ERD](https://github.com/user-attachments/assets/df0569eb-92a9-419b-b638-c1c942cd46a5)
+
+![Daten Modell - MySQL](https://github.com/user-attachments/assets/bfbde3ef-db81-4e87-83c5-4703e85e133c)
