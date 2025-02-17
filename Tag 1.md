@@ -91,7 +91,7 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
  
 #### **Datenmodellierung (Zusammenfassung)**
 
-### **Schritte:**  
+##### **Schritte:**  
 1. **1NF:** Atomare Werte, keine mehrfachen Werte in einer Zelle  
 2. **2NF:** 1NF + vollständige Abhängigkeit vom Primärschlüssel  
 3. **3NF:** 2NF + keine transitiven Abhängigkeiten  
