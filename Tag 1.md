@@ -90,26 +90,14 @@ Daten müssen **normalisiert** sein, um Redundanzen und Anomalien zu vermeiden. 
 🔗 [GitLab Link zum Recap Modul 162](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/1.Tag)
  
 #### **Datenmodellierung (Zusammenfassung)**
-- **Ziel:** Strukturierung & Speicherung von Daten  
-- **Drei Modelle:**  
-  1. **Konzeptionelles Modell** – Fachlich, unabhängig von Technik  
-  2. **Logisches Modell** – Umsetzung für DB-Systeme  
-  3. **Physisches Modell** – Technische Optimierung (Indizes, Partitionierung)  
- 
-- **3NF Modellierung:** Für operative Systeme (ERP, Core DWH)  
-- **Star Schema:** Optimiert für Reporting/Data Mart  
-- **Data Vault:** Erweiterbar, automatisiert, für Integration/Core DWH  
- 
-#### **Normalisierung (M162)**  
-**Ziel:**  
-- **Redundanzen & Anomalien vermeiden**  
-- **Datenkonsistenz & Effizienz erhöhen**  
- 
-##### **Schritte:**  
+
+### **Schritte:**  
 1. **1NF:** Atomare Werte, keine mehrfachen Werte in einer Zelle  
 2. **2NF:** 1NF + vollständige Abhängigkeit vom Primärschlüssel  
 3. **3NF:** 2NF + keine transitiven Abhängigkeiten  
 4. **BCNF:** Striktere 3NF (bei mehreren Schlüsselkandidaten)  
-5. **4NF/5NF:** Vermeidung komplexer Redundanzen  
+5. **4NF/5NF:** Vermeidung komplexer Redundanzen
+
+#### **Datenmodell ERD** ####
 
 ![ERD](https://github.com/user-attachments/assets/df0569eb-92a9-419b-b638-c1c942cd46a5)
