@@ -16,4 +16,3 @@ Dies ist das Repository zu **Modul 164**, in dem alle Dokumentationen zu den Auf
 - [Tag 7 - 31.03.2025](./Tag%207.md)  
 - [Tag 8 - 07.04.2025](./Tag%208.md)  
 - [Tag 9 - 14.04.2025](./Tag%209.md)  
-- [Tag 10 - 21.04.2025](./Tag%2010.md)
