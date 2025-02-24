@@ -157,3 +157,66 @@ Ein reguläres Dateisystem ist in manchen Fällen sinnvoll, z. B. wenn kein Mehr
 
 
 ![Mindmap](https://github.com/user-attachments/assets/d30858a1-ce2f-427d-b69b-d8dfb63150d4))
+
+### Auftrag SQL Script 
+
+#### Zeichensatzkodierungen 📚
+
+##### 1. **ASCII (Veraltet)** 
+- 7-Bit codiert, ca. 32 Steuerzeichen & 96 druckbare Zeichen
+- Fokus auf englische Sprache 🇬🇧
+
+##### 2. **ANSI (ISO-8859)**
+- ISO-8859-1 (Latin1) für Westeuropa 🇩🇪🇫🇷
+- Deckt alle ASCII-Zeichen ab und erweitert mit 96 internationalen Zeichen via Codepages
+
+##### 3. **Unicode (UCS)**
+- Vereint alle Sprachen der Welt 🌍
+- 32-Bit pro Zeichen, ca. 100.000 Zeichen
+
+##### 4. **UTF-8 (Standard)**
+- Häufigste Kodierung für Unicode mit hohem ASCII-Anteil
+- 95% der Websites nutzen UTF-8 🌐
+- Speichergröße: 1-4 Bytes je nach Zeichen (z.B. Emojis)
+
+##### 5. **UTF-16 & UTF-32**
+- UTF-16: 16 Bit pro Zeichen (z.B. Java)
+- UTF-32: Fix 32 Bit, hoher Speicherbedarf für häufige ASCII-Zeichen
+
+#### SQL-Aufgaben 📝
+
+##### 1. **CREATE SCHEMA & CREATE TABLE**
+Erstellen Sie zwei Tabellen mit UTF-8 als Default Charset.
+
+##### 2. **DROP TABLE**
+Löschen Sie eine Tabelle und stellen Sie sie mit dem Script wieder her.
+
+##### 3. **Tabelle tbl_Mitarbeiter erstellen**
+Erstellen Sie eine Tabelle mit folgenden Attributen:
+
+| Attribut       | Datentyp          |
+|----------------|-------------------|
+| MA_ID          | INT               |
+| Name           | VARCHAR(50)       |
+| Vorname        | VARCHAR(30)       |
+| Geburtsdatum   | DATETIME          |
+| Telefonnummer  | VARCHAR(12)       |
+| Einkommen      | FLOAT(10,2)       |
+
+##### 4. **ALTER TABLE MODIFY/CHANGE**
+Ändern Sie den Charset von `Name` und `Vorname` auf `latin1`.
+
+##### 5. **ALTER TABLE DROP COLUMN**
+Löschen Sie die Attribute `Name`, `Vorname` und `Telefonnummer` aus `tbl_fahrer` und `tbl_disponent`.
+
+##### 6. **ALTER TABLE ADD COLUMN**
+Erstellen Sie die Fremdschlüssel für die Spezialiserungen.
+
+#### Bilder zum Ablauf in MySQL Workbench SQL Scripting
+
+
+![Code Erster Teil](https://github.com/user-attachments/assets/fc959b16-cf2c-4a78-8cc8-3c1f638ffddb)
+
+![Code Zweiter Teil](https://github.com/user-attachments/assets/046bb77b-7d3d-4fce-86a9-74678dadaa84)
+
+![Run Fenster](https://github.com/user-attachments/assets/1d9f7ddd-c6c2-4e7d-adb8-ef38426045f6)
