@@ -53,7 +53,8 @@ In diesem Beispiel teilen die Entitäten `Mitarbeiter` und `Kunde` einige Attrib
 
 ![Daarstellung Generalisierung](https://github.com/user-attachments/assets/a37eb555-cc57-42ef-9738-7166552adf24)
 
-### Auftrag Generalisierung  
+### Auftrag Identifying Relationship
+  
 🔗 [GitLab Link zu Generalisieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
 
 #### Kardinalitäten
@@ -96,3 +97,5 @@ In diesem Beispiel kann ein Student viele Kurse belegen, und ein Kurs kann von v
 ##### Beispiel für eine Zwischentabelle:
 - **Student_Kurs** (StudentID, KursID)
   - Diese Tabelle verbindet Studenten und Kurse und ermöglicht die **n:m-Beziehung**.
+
+![Identifying Relationship](https://github.com/user-attachments/assets/f2466b7d-1b62-4f18-8110-e69f41b0f3ae)
