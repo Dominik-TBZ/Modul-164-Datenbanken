@@ -154,3 +154,6 @@ Ein reguläres Dateisystem ist in manchen Fällen sinnvoll, z. B. wenn kein Mehr
 | Versant       | Versant      | objektorientiert |
 | Visual FoxPro | Microsoft    | relational, Desktop-System |
 | Teradata      | NCR Teradata | relationales Hochleistungs-DBMS, speziell für Data Warehouses |
+
+
+![Mindmap](https://github.com/user-attachments/assets/d30858a1-ce2f-427d-b69b-d8dfb63150d4))
