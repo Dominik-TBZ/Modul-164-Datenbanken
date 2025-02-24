@@ -159,6 +159,7 @@ Ein reguläres Dateisystem ist in manchen Fällen sinnvoll, z. B. wenn kein Mehr
 ![Mindmap](https://github.com/user-attachments/assets/d30858a1-ce2f-427d-b69b-d8dfb63150d4))
 
 ### Auftrag SQL Script 
+🔗 [Auftrag DLL mit SQL Script](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
 
 #### Zeichensatzkodierungen 📚
 
