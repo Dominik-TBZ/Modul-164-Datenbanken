@@ -96,8 +96,8 @@ Diese Beziehung wird oft durch eine Zwischentabelle (z. B. "Student_Kurs") reali
 
 ![Identifying Relationship](https://github.com/user-attachments/assets/f2466b7d-1b62-4f18-8110-e69f41b0f3ae)
 
-### Auftrag Generalisierung  
-🔗 [GitLab Link zu Generalisieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
+### Auftrag DBMS (Datenbank Management System)  
+🔗 [DBMS (Datenbank Management System)](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
 
 #### Zusammenfassung: Datenbank Management System (DBMS)
 
