@@ -2,7 +2,7 @@
 
 ## Tag 2
 
-### Auftrag Recap  
+### Auftrag Generalisierung  
 🔗 [GitLab Link zu Generalisieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
 
 #### Was ist Generalisierung?
