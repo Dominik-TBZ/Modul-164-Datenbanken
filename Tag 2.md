@@ -52,3 +52,8 @@ In diesem Beispiel teilen die Entitäten `Mitarbeiter` und `Kunde` einige Attrib
    - Wenn viele Entitäten unter einer Oberklasse gruppiert werden, kann die Hierarchie sehr tief und komplex werden. Dies führt zu einer schwierigen Datenmodellierung und Wartung, da bei jeder Änderung in der Oberklasse alle untergeordneten Entitäten betroffen sein könnten.
 
 ![Daarstellung Generalisierung](https://github.com/user-attachments/assets/a37eb555-cc57-42ef-9738-7166552adf24)
+
+### Auftrag Generalisierung  
+🔗 [GitLab Link zu Generalisieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
+
+####
