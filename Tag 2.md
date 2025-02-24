@@ -95,3 +95,62 @@ Diese Beziehung wird oft durch eine Zwischentabelle (z. B. "Student_Kurs") reali
   - Diese Tabelle verbindet Studenten und Kurse und ermöglicht die **n:m-Beziehung**.
 
 ![Identifying Relationship](https://github.com/user-attachments/assets/f2466b7d-1b62-4f18-8110-e69f41b0f3ae)
+
+### Auftrag Generalisierung  
+🔗 [GitLab Link zu Generalisieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
+
+#### Zusammenfassung: Datenbank Management System (DBMS)
+
+Ein **Datenbanksystem (DBS)** dient der elektronischen Verwaltung großer Datenmengen und besteht aus zwei Hauptkomponenten:  
+1. **Datenbankmanagementsystem (DBMS)** – die Verwaltungssoftware  
+2. **Datenbank (DB)** – die gespeicherten Daten  
+
+#### Merkmale eines DBMS  
+- **Integrierte Datenhaltung**: Zentrale Speicherung aller Daten zur Vermeidung von Redundanz  
+- **Datenbanksprache**: Ermöglicht Abfragen (DQL), Definition (DDL), Manipulation (DML), Zugriffskontrolle (DCL) und Transaktionen (TCL)  
+- **Benutzersichten**: Unterschiedliche Ansichten für verschiedene Benutzergruppen  
+- **Konsistenzkontrolle**: Sicherstellung der Datenintegrität durch Integritätsbedingungen  
+- **Datenzugriffskontrolle**: Schutz vor unautorisierten Zugriffen  
+- **Transaktionen**: Änderungen werden als logische Einheiten verarbeitet (Atomarität & Dauerhaftigkeit)  
+- **Mehrbenutzerfähigkeit**: Gleichzeitiger Zugriff mehrerer Nutzer durch Synchronisation  
+- **Datensicherung**: Wiederherstellung der Datenbank bei Fehlern  
+
+#### Vorteile eines DBMS  
+✅ Nutzung von **Standards**  
+✅ **Effizienter Datenzugriff** durch optimierte Speicherung und Abfragen  
+✅ **Kürzere Entwicklungszeiten** durch zentrale Funktionen  
+✅ **Hohe Flexibilität** durch Anpassung an neue Anforderungen  
+✅ **Hohe Verfügbarkeit** für parallele Nutzerzugriffe  
+✅ **Wirtschaftlichkeit** durch zentralisierte Verwaltung  
+
+#### Nachteile eines DBMS  
+❌ **Hohe Anfangskosten** für Hardware und Software  
+❌ **Weniger effizient** für spezialisierte Anwendungen  
+❌ **Optimierungskonflikte** zwischen konkurrierenden Anforderungen  
+❌ **Mehrkosten** für Sicherheit und Synchronisation  
+❌ **Hochqualifiziertes Personal** erforderlich  
+❌ **Verwundbarkeit** durch Zentralisierung  
+
+Ein reguläres Dateisystem ist in manchen Fällen sinnvoll, z. B. wenn kein Mehrbenutzerzugriff nötig ist oder strenge Echtzeitanforderungen bestehen.
+
+
+#### DBMS Übersicht - Tabelle
+
+| DBMS            | Hersteller     | Modell/Charakteristik |
+|----------------|--------------|----------------------|
+| Adabas        | Software AG  | NF2-Modell (nicht normalisiert) |
+| Cache         | InterSystems | hierarchisch, “postrelational” |
+| DB2           | IBM          | objektrelational |
+| Firebird      | –            | relational, basierend auf InterBase |
+| IMS           | IBM          | hierarchisch, Mainframe-DBMS |
+| Informix      | IBM          | objektrelational |
+| InterBase     | Borland      | relational |
+| MS Access     | Microsoft    | relational, Desktop-System |
+| MS SQL Server | Microsoft    | objektrelational |
+| MySQL         | MySQL AB     | relational |
+| Oracle        | ORACLE       | objektrelational |
+| PostgreSQL    | –            | objektrelational, hervorgegangen aus Ingres und Postgres |
+| Sybase ASE    | Sybase       | relational |
+| Versant       | Versant      | objektorientiert |
+| Visual FoxPro | Microsoft    | relational, Desktop-System |
+| Teradata      | NCR Teradata | relationales Hochleistungs-DBMS, speziell für Data Warehouses |
