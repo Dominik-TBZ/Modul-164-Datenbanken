@@ -56,4 +56,43 @@ In diesem Beispiel teilen die Entitäten `Mitarbeiter` und `Kunde` einige Attrib
 ### Auftrag Generalisierung  
 🔗 [GitLab Link zu Generalisieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/2.Tag)
 
-####
+#### Kardinalitäten
+
+In relationalen Datenbanken gibt es verschiedene Arten von **Beziehungen**, die Entitäten miteinander verbinden. Diese Beziehungen beschreiben, wie Tabellen miteinander verknüpft sind und wie Daten aus einer Tabelle auf Daten in einer anderen Tabelle zugreifen können. Es gibt drei Hauptarten von Beziehungen:
+
+##### 1. **1:1-Beziehung (One-to-One)**
+
+Eine **1:1-Beziehung** tritt auf, wenn eine Entität in einer Tabelle genau mit einer Entität in einer anderen Tabelle verbunden ist. Das bedeutet, dass für jedes Element der ersten Tabelle genau ein zugehöriges Element in der zweiten Tabelle existiert.
+
+##### Beispiel:
+- **Person** - **Pass**
+  - Jede Person hat genau einen Pass, und jeder Pass ist einer bestimmten Person zugeordnet.
+  - **Person** (ID, Name) <-> **Pass** (Passnummer, PersonID)
+
+In diesem Beispiel hat jede Person genau einen Pass, und jeder Pass gehört genau einer Person. Es besteht eine **1:1-Beziehung** zwischen der Tabelle "Person" und der Tabelle "Pass".
+
+##### 2. **1:n-Beziehung (One-to-Many)**
+
+Eine **1:n-Beziehung** tritt auf, wenn eine Entität in einer Tabelle mit mehreren Entitäten in einer anderen Tabelle verbunden ist, jedoch jede Entität der zweiten Tabelle nur einer Entität der ersten Tabelle zugeordnet ist. Eine Entität in der ersten Tabelle (die "1"-Seite) kann also viele zugehörige Entitäten in der zweiten Tabelle (die "n"-Seite) haben.
+
+##### Beispiel:
+- **Person** - **Kunde**
+  - Eine Person kann mehrere Kundenbeziehungen haben, aber jeder Kunde ist nur einer Person zugeordnet.
+  - **Person** (ID, Name) <-> **Kunde** (Kundennummer, Name, PersonID)
+
+In diesem Beispiel kann eine Person viele Kundenbeziehungen haben (z. B. durch verschiedene Firmen oder Projekte), aber jeder Kunde gehört nur einer Person. Es besteht eine **1:n-Beziehung** zwischen der Tabelle "Person" und der Tabelle "Kunde".
+
+##### 3. **n:m-Beziehung (Many-to-Many)**
+
+Eine **n:m-Beziehung** tritt auf, wenn mehrere Entitäten in einer Tabelle mit mehreren Entitäten in einer anderen Tabelle verbunden sind. Das bedeutet, dass für jede Entität der ersten Tabelle mehrere Entitäten in der zweiten Tabelle existieren können und umgekehrt.
+
+##### Beispiel:
+- **Student** - **Kurs**
+  - Ein Student kann mehrere Kurse belegen, und ein Kurs kann von mehreren Studenten besucht werden.
+  - **Student** (ID, Name) <-> **Kurs** (KursID, Kursname)
+
+In diesem Beispiel kann ein Student viele Kurse belegen, und ein Kurs kann von vielen Studenten belegt werden. Es besteht eine **n:m-Beziehung** zwischen der Tabelle "Student" und der Tabelle "Kurs". Diese Beziehung wird oft durch eine Zwischentabelle (z. B. "Student_Kurs") realisiert, die beide Tabellen miteinander verbindet.
+
+##### Beispiel für eine Zwischentabelle:
+- **Student_Kurs** (StudentID, KursID)
+  - Diese Tabelle verbindet Studenten und Kurse und ermöglicht die **n:m-Beziehung**.
