@@ -68,3 +68,55 @@ Listen Sie fünf Beispiele auf und schreiben Sie die korrekte Datentypbezeichnun
 - `TIME`  
 - `CHAR`  
 
+#### Auftrag Tourenplaner
+ 
+##### 1. Tabellen erstellen
+ 
+```SQL
+CREATE TABLE Tabellenname (
+    Spalte1,
+    Spalte2,
+    Spalte3,
+    ...
+);
+```
+ 
+##### 2. Daten einfügen
+ 
+```SQL
+INSERT INTO Tabellenname (Spalte1, Spalte2, Spalte3, ...)
+VALUES (Wert1, Wert2, Wert3, ...);
+```
+ 
+##### 3. Daten abfragen
+ 
+```SQL
+SELECT Spalte1, Spalte2, ...
+FROM Tabellenname
+WHERE Bedingung;
+```
+ 
+##### Tabelle erstellen
+ 
+```SQL
+CREATE TABLE Kunden (
+    KundenID,
+    Name,
+    Stadt
+);
+```
+ 
+##### Daten einfügen
+ 
+```SQL
+INSERT INTO Kunden (KundenID, Name, Stadt)
+VALUES (1, 'Max Mustermann', 'Zürich');
+```
+ 
+##### Daten abfragen
+ 
+```SQL
+SELECT Name, Stadt
+FROM Kunden
+WHERE Stadt = 'Zürich';
+```
