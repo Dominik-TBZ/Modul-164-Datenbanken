@@ -26,43 +26,45 @@
 #### Aufgabe bester Datentyp
 
 ##### 1. Welche Datentypen würden Sie für die folgenden Werte jeweils vergeben?  
+Wählen Sie den Datentyp möglichst speicherplatzoptimiert.  
 
-1. **53** → `TINYINT UNSIGNED`  
-2. **983773** → `MEDIUMINT UNSIGNED`  
+1. **53** → `INTEGER`  
+2. **983773** → `INTEGER`  
 3. **Fritz Schmitt** → `VARCHAR(50)`  
 4. **fritz_schmitt** → `VARCHAR(30)`  
-5. **müller13** → `VARCHAR(255)` (Passwort sollte gehasht gespeichert werden)  
+5. **müller13** → `VARCHAR(255)`  
 6. **07661/66456-2** → `VARCHAR(20)`  
 7. **Kirchweg** → `VARCHAR(50)`  
 8. **Kirchweg 13** → `VARCHAR(50)`  
-9. **Langer Text** → `TEXT`  
+9. **Am Anfang, als noch alles dunkel war, wussten wir nicht, was geschehen würde, aber wir hatten zum Glück mächtige Freunde, deren Anliegen es nicht sein konnte, uns zu hintergehen. Deshalb war das Glück uns hold, und schon nach wenigen Tagen konnten wir voller Freude die erste Glühbirne in unserem Wohnzimmer in Betrieb nehmen.** → `TEXT`  
 10. **2.88499399** → `FLOAT(10,8)`  
 11. **19.03.2009** → `DATE`  
 12. **13.02.1983 22:07:12** → `DATETIME`  
-13. **64002** → `SMALLINT UNSIGNED`  
+13. **64002** → `INTEGER`  
 
 ##### 2. Welche Datentypen würden Sie für die folgenden Felder jeweils vergeben?  
 Wählen Sie den Datentyp möglichst speicherplatzoptimiert.  
 
-1. **Id** → `INT UNSIGNED AUTO_INCREMENT`  
-2. **Vorname** → `VARCHAR(50)`  
-3. **Nachname** → `VARCHAR(50)`  
-4. **Strasse** → `VARCHAR(100)`  
-5. **Hausnummer** → `SMALLINT UNSIGNED`  
-6. **Postleitzahl** → `MEDIUMINT UNSIGNED`  
-7. **Telefonnummer** → `VARCHAR(20)`  
+1. **Id** → `INTEGER`  
+2. **Vorname** → `VARCHAR()`  
+3. **Nachname** → `VARCHAR()`  
+4. **Strasse** → `VARCHAR()`  
+5. **Hausnummer** → `INTEGER`  
+6. **Postleitzahl** → `INTEGER`  
+7. **Telefonnummer** → `INTEGER`  
 8. **Registrierungsdatum** → `DATE`  
-9. **Bestellnummer** → `INT UNSIGNED`  
+9. **Bestellnummer** → `INT`  
 10. **kommentar_an_versender** → `TEXT`  
 11. **preis** → `FLOAT(10,3)`  
-12. **enthaltene_mehrwertsteuer** → `DECIMAL(6,4)`  
-13. **roman_vollstaendiger_inhalt** → `MEDIUMTEXT`  
+12. **enthaltene_mehrwertsteuer** → `FLOAT(2,4)`  
+13. **roman_vollstaendiger_inhalt** → `TEXT`  
 
 ##### 3. Welche MySQL-Datentypen sind in Aufgabe 1 und 2 noch nicht vorgekommen?  
 Listen Sie fünf Beispiele auf und schreiben Sie die korrekte Datentypbezeichnung für MySQL.  
 
-- `ENUM('Ja', 'Nein')`  
+- `ENUM`  
 - `BOOLEAN`  
 - `BLOB`  
 - `TIME`  
-- `CHAR(10)`  
+- `CHAR`  
+
