@@ -68,55 +68,247 @@ Listen Sie fünf Beispiele auf und schreiben Sie die korrekte Datentypbezeichnun
 - `TIME`  
 - `CHAR`  
 
-#### Auftrag Tourenplaner
+### Auftrag SQL - Befehle  
+🔗 [GitLab Link zu den SQL Befehlen](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/3.Tag)
+
+#### Insert
  
-##### 1. Tabellen erstellen
+##### **Kurzform:**
  
-```SQL
-CREATE TABLE Tabellenname (
-    Spalte1,
-    Spalte2,
-    Spalte3,
-    ...
-);
+```sql
+INSERT INTO kunden (vorname, nachname, wohnort, land_id) VALUES
+('Heinrich', 'Schmitt', 'Zürich', 2),
+('Sabine', 'Müller', 'Bern', 2),
+('Markus', 'Mustermann', 'Wien', 1);
 ```
  
-##### 2. Daten einfügen
+##### **Langform:**
  
-```SQL
-INSERT INTO Tabellenname (Spalte1, Spalte2, Spalte3, ...)
-VALUES (Wert1, Wert2, Wert3, ...);
+```sql
+INSERT INTO kunden (vorname, nachname, wohnort, land_id) VALUES ('Herr', 'Maier', NULL, NULL);
+INSERT INTO kunden (vorname, nachname, wohnort, land_id) VALUES ('Herr', 'Bulgur', 'Sirnach', NULL);
+INSERT INTO kunden (vorname, nachname, wohnort, land_id) VALUES ('Maria', 'Manta', NULL, NULL);
 ```
  
-##### 3. Daten abfragen
+##### Korrektur der fehlerhaften SQL-Befehle
  
-```SQL
-SELECT Spalte1, Spalte2, ...
-FROM Tabellenname
-WHERE Bedingung;
+- **A**
+**Fehler:** Die Tabelle "kunden" wurde nicht spezifiziert.
+ 
+```sql
+INSERT INTO kunden (nachname, wohnort, land_id) VALUES ('Fesenkampp', 'Duisburg', 3);
 ```
  
-##### Tabelle erstellen
+- **B**
+**Fehler:** Falsche Syntax mit Anführungszeichen um "vorname".
  
-```SQL
-CREATE TABLE Kunden (
-    KundenID,
-    Name,
-    Stadt
-);
+```sql
+INSERT INTO kunden (vorname) VALUES ('Herbert');
 ```
  
-##### Daten einfügen
+- **C**
+**Fehler:** Reihenfolge der Spalten stimmt nicht mit den Werten überein, und es gibt eine zusätzliche Spalte "Deutschland".
  
-```SQL
-INSERT INTO Kunden (KundenID, Name, Stadt)
-VALUES (1, 'Max Mustermann', 'Zürich');
+```sql
+INSERT INTO kunden (nachname, vorname, wohnort, land_id) VALUES ('Schülter', 'Albert', 'Duisburg', 3);
 ```
  
-##### Daten abfragen
+- **D**
+**Fehler:** Ein leerer String als "kunde_id" (Primärschlüssel) ist nicht erlaubt.
  
-```SQL
-SELECT Name, Stadt
-FROM Kunden
-WHERE Stadt = 'Zürich';
+```sql
+INSERT INTO kunden (vorname, nachname, land_id, wohnort) VALUES ('Brunhild', 'Sulcher', 1, 'Süderstade');
+```
+ 
+- **E**
+**Fehler:** Falsche Reihenfolge der Werte und fehlende Spaltenangabe.
+ 
+```sql
+INSERT INTO kunden (vorname, nachname, land_id, wohnort) VALUES ('Jochen', 'Schmied', 2, 'Solingen');
+```
+ 
+- **F**
+**Fehler:** Ein leerer String als Primärschlüsselwert ist nicht erlaubt.
+ 
+```sql
+INSERT INTO kunden (nachname, land_id, wohnort) VALUES ('Doppelbrecher', 2, '');
+```
+ 
+- **G**
+**Fehler:** Fehlende Spalte "vorname" in der Spaltenliste.
+ 
+```sql
+INSERT INTO kunden (vorname, nachname, wohnort, land_id) VALUES ('Christoph', 'Fesenkampp', 'Duisburg', 3);
+```
+ 
+- **H**
+**Fehler:** Doppelte Anweisung, identisch mit B.
+ 
+```sql
+INSERT INTO kunden (vorname) VALUES ('Herbert');
+```
+ 
+- **I**
+**Fehler:** Fehlende Anführungszeichen um Werte.
+ 
+```sql
+INSERT INTO kunden (nachname, vorname, wohnort, land_id) VALUES ('Schulter', 'Albert', 'Duisburg', 1);
+```
+ 
+- **J**
+**Fehler:** "VALUE" anstelle von "VALUES" benutzt und leere Zeichenkette für Primärschlüssel.
+ 
+```sql
+INSERT INTO kunden (vorname, nachname, land_id, wohnort) VALUES ('Brunhild', 'Sulcher', 1, 'Süderstade');
+```
+ 
+- **K**
+**Fehler:** "VALUE" anstelle von "VALUES" und fehlende Anführungszeichen um "Solingen".
+ 
+```sql
+INSERT INTO kunden (vorname, nachname, land_id, wohnort) VALUES ('Jochen', 'Schmied', 2, 'Solingen');
+```
+ 
+#### SQL Aufgabenlösung Update, delete, alter und drop
+ 
+##### 1. Vervollständigung des Regisseurs
+ 
+```sql
+UPDATE regisseur
+SET vorname = 'Etan'
+WHERE nachname = 'Cohen' AND vorname IS NULL;
+```
+ 
+##### 2. Korrektur der Filmlänge
+ 
+```sql
+UPDATE filme
+SET dauer = 120
+WHERE titel = 'Angst' AND dauer <> 120;
+```
+ 
+##### 3. Umbenennung der Tabelle von DVD zu Bluray
+ 
+```sql
+RENAME TABLE dvd_sammlung TO bluray_sammlung;
+```
+ 
+##### 4. Hinzufügen einer neuen Spalte "Preis"
+ 
+```sql
+ALTER TABLE filme
+ADD COLUMN preis DECIMAL(5,2) DEFAULT NULL;
+```
+ 
+##### 5. Entfernung des Films "Angriff auf Rom"
+ 
+```sql
+DELETE FROM filme
+WHERE titel = 'Angriff auf Rom' AND regisseur = 'Steven Burghofer';
+```
+ 
+##### 6. Umbenennung der Spalte "filme" zu "kinoFilme"
+ 
+```sql
+ALTER TABLE sammlung
+CHANGE COLUMN filme kinoFilme VARCHAR(255);
+```
+ 
+##### 7. Löschen der Spalte "Nummer"
+ 
+```sql
+ALTER TABLE filme
+DROP COLUMN IF EXISTS nummer;
+```
+ 
+##### 8. Löschen der gesamten Filmverleih-Tabelle
+ 
+```sql
+DROP TABLE IF EXISTS filmverleih;
+```
+ 
+#### SQL-SELECT Aufgaben
+ 
+##### Aufgabe a
+ 
+```sql
+SELECT * FROM dvd_sammlung;
+```
+ 
+##### Aufgabe b
+ 
+```sql
+SELECT filmtitel, filmnummer FROM filme;
+```
+ 
+##### Aufgabe c
+ 
+```sql
+SELECT filmtitel, regisseur FROM filme;
+```
+ 
+##### Aufgabe d
+ 
+```sql
+SELECT filmtitel FROM filme WHERE regisseur = 'Quentin Tarantino';
+```
+ 
+##### Aufgabe e
+ 
+```sql
+SELECT filmtitel FROM filme WHERE regisseur = 'Steven Spielberg';
+```
+ 
+##### Aufgabe f
+ 
+```sql
+SELECT filmtitel FROM filme WHERE regisseur LIKE 'Steven%';
+```
+ 
+##### Aufgabe g
+ 
+```sql
+SELECT filmtitel FROM filme WHERE laenge > 120;
+```
+ 
+##### Aufgabe h
+ 
+```sql
+SELECT filmtitel FROM filme WHERE regisseur IN ('Quentin Tarantino', 'Steven Spielberg');
+```
+ 
+##### Aufgabe i
+ 
+```sql
+SELECT filmtitel FROM filme WHERE regisseur = 'Quentin Tarantino' AND laenge < 90;
+```
+ 
+##### Aufgabe j
+ 
+```sql
+SELECT filmtitel FROM filme WHERE filmtitel LIKE '%Sibirien%';
+```
+ 
+##### Aufgabe k
+ 
+```sql
+SELECT filmtitel FROM filme WHERE filmtitel LIKE 'Das große Rennen%';
+```
+ 
+##### Aufgabe l
+ 
+```sql
+SELECT filmtitel, regisseur FROM filme ORDER BY regisseur;
+```
+ 
+##### Aufgabe m
+ 
+```sql
+SELECT filmtitel, regisseur FROM filme ORDER BY regisseur, filmtitel;
+```
+ 
+##### Aufgabe n
+ 
+```sql
+SELECT filmtitel FROM filme WHERE regisseur = 'Quentin Tarantino' ORDER BY laenge DESC;
 ```
