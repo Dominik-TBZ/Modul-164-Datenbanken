@@ -5,6 +5,8 @@
 ### Auftrag Datentypen  
 🔗 [GitLab Link zu den Datentypen](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/3.Tag)
 
+#### Tabelle zu den Datentypen 
+
 | Datentyp                           | MariaDB (MySQL) Typ       | Beispiel                  | Bemerkung / Einstellungen                                  |
 |------------------------------------|--------------------------|--------------------------|------------------------------------------------------------|
 | Ganze Zahlen                      | INT, TINYINT, SMALLINT, MEDIUMINT, BIGINT | 42 | Unterschiedliche Speichergrößen für verschiedene Wertebereiche |
