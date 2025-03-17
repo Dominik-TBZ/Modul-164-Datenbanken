@@ -2,7 +2,7 @@
 
 ## Tag 5
 
-### Auftrag Recap  
+### Auftrag Löschen  
 🔗 [GitLab Link zum Löschen von Daten](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/5.Tag?ref_type=heads)
 
 #### Zusammenfassung
@@ -88,3 +88,27 @@ Fremdschlüssel (FK) regeln, wie abhängige Daten bei Änderungen behandelt werd
 - `SET DEFAULT` 🎯 → Setzt FK-Wert auf einen Standardwert  
 - `RESTRICT` ❌ → Verhindert Löschung, wenn abhängige Daten existieren  
 - `NO ACTION` 🏁 → Wie `RESTRICT`, aber mit verzögerter Prüfung
+
+### Referentielle Datenintegrität
+🔗 [GitLab Link zum Löschen von Daten](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/Referentielle_Datenintegritaet.md)
+
+#### Aufgabe 1
+
+##### ❌ Warum können in professionellen Datenbanken nicht einfach Daten gelöscht werden?  
+
+In professionellen Datenbanken ist das **direkte Löschen von Daten eingeschränkt**, weil:  
+
+1. **Referentielle Integrität 🔗** – Ein Datensatz kann mit anderen Tabellen verknüpft sein. Unkontrolliertes Löschen könnte zu **inkonsistenten oder fehlerhaften Daten** führen.  
+2. **Datenhistorie & Nachvollziehbarkeit 📜** – Viele Systeme müssen aus rechtlichen oder geschäftlichen Gründen **Änderungen nachvollziehbar** speichern (z. B. durch Logging oder Archivierung).  
+3. **Verhinderung von Datenverlust 🚨** – Unbedachtes Löschen kann **kritische Geschäftsdaten** vernichten, was fatale Folgen haben kann.  
+4. **Leistung & Performance ⚡** – Statt Daten zu löschen, werden sie oft nur als **"inaktiv" markiert** (Soft-Delete), um **Abfragen effizienter** zu gestalten.  
+
+##### 🛡️ Wer stellt die referentielle Integrität sicher?  
+
+Die **referentielle Integrität** wird durch mehrere Mechanismen gewährleistet:  
+
+- **Datenbank-Constraints ⚖️** – Fremdschlüssel (`FOREIGN KEY`) mit Optionen wie `ON DELETE RESTRICT` oder `CASCADE`.  
+- **Triggers 🔥** – Datenbank-Trigger können verhindern, dass Daten **unzulässig gelöscht oder geändert** werden.  
+- **Transaktionen 🔄** – `COMMIT` und `ROLLBACK` stellen sicher, dass Daten nur **konsistent** gespeichert oder zurückgesetzt werden.  
+- **Anwendungslogik 🏗️** – Software-Entwickler implementieren oft zusätzliche Sicherheitsprüfungen in der Anwendungsschicht.  
+
