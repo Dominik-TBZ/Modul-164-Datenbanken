@@ -164,3 +164,20 @@ DELETE FROM tbl_orte WHERE ID_Ort = 5;
 
 ##### 🎯 Fazit  
 Dank dieser schrittweisen Anpassung bleibt die referentielle Integrität der Datenbank erhalten, und der Fehler in den Ortsdaten wurde erfolgreich korrigiert. 🚀
+
+### SELECT Alias
+🔗 [GitLab Link zu SELECT Alias](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/SELECT_ALIAS.md)
+
+#### Statement 1: Ausgabe von kunde_id, Name und Postleitzahl für Kunden mit PLZ > 80000
+
+SELECT kunde_id, name, ort_postleitzahl 
+FROM kunde AS kundenliste 
+WHERE kundenliste.ort_postleitzahl > 80000;
+
+#### Statement 2: Ausgabe von Ort-Name und Kunden-Name für Orte, deren Name auf 'n' endet
+
+SELECT o.name, k.name 
+FROM ort AS o
+JOIN kunde AS k 
+    ON o.postleitzahl = k.ort_postleitzahl
+WHERE o.name LIKE '%n';
