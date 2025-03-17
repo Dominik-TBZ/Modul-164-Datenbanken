@@ -112,3 +112,55 @@ Die **referentielle Integrität** wird durch mehrere Mechanismen gewährleistet:
 - **Transaktionen 🔄** – `COMMIT` und `ROLLBACK` stellen sicher, dass Daten nur **konsistent** gespeichert oder zurückgesetzt werden.  
 - **Anwendungslogik 🏗️** – Software-Entwickler implementieren oft zusätzliche Sicherheitsprüfungen in der Anwendungsschicht.  
 
+#### Aufgabe 2 -  🛠️ Fehlerkorrektur in der Datenbank  
+
+##### ❌ Versuch, „Basel“ aus `tbl_orte` zu löschen  
+
+Beim Versuch, den Eintrag `4000 Basel` aus der Tabelle `tbl_orte` zu löschen, tritt ein Fehler auf:  
+
+```sql
+DELETE FROM tbl_orte WHERE Ortsbezeichnung = 'Basel';
+```
+
+##### 🧐 Beobachtung  
+Die Datenbank gibt eine Fehlermeldung aus, weil die Ortschaft `Basel` (`ID_Ort = 5`) in der Tabelle `tbl_stationen` über eine **Fremdschlüssel-Referenz** (`FS_ID_Ort`) mit bestehenden Fahrten verknüpft ist.  
+**Referentielle Integrität** verhindert, dass ein Datensatz gelöscht wird, solange es abhängige Einträge gibt.  
+
+##### ✅ Korrektur: Richtiges Vorgehen  
+
+Damit der falsche Ort ersetzt und gelöscht werden kann, müssen folgende Schritte durchgeführt werden:  
+
+###### 1️⃣ Den neuen Ort "Bern" hinzufügen  
+Zuerst wird der neue, korrekte Ort `3000 Bern` in die Tabelle `tbl_orte` eingefügt:  
+
+```sql
+INSERT INTO tbl_orte (PLZ, Ortsbezeichnung) VALUES ('3000', 'Bern');
+```
+
+###### 2️⃣ Die `ID_Ort` von „Bern“ herausfinden  
+Nach dem Einfügen müssen wir die automatisch vergebene `ID_Ort` für `Bern` herausfinden:  
+
+```sql
+SELECT ID_Ort FROM tbl_orte WHERE Ortsbezeichnung = 'Bern';
+```
+
+Angenommen, `Bern` hat nun die `ID_Ort = 6`, verwenden wir diese im nächsten Schritt.  
+
+###### 3️⃣ Fahrten aktualisieren, die aktuell auf „Basel“ verweisen  
+Die bestehenden Datensätze in `tbl_stationen`, die auf `Basel` (`ID_Ort = 5`) verweisen, müssen auf die neue `ID_Ort` von `Bern` (`ID_Ort = 6`) geändert werden:  
+
+```sql
+UPDATE tbl_stationen 
+SET FS_ID_Ort = 6 
+WHERE FS_ID_Ort = 5;
+```
+
+###### 4️⃣ Den alten Eintrag „Basel“ löschen  
+Nun ist `Basel` nicht mehr referenziert und kann sicher entfernt werden:  
+
+```sql
+DELETE FROM tbl_orte WHERE ID_Ort = 5;
+```
+
+##### 🎯 Fazit  
+Dank dieser schrittweisen Anpassung bleibt die referentielle Integrität der Datenbank erhalten, und der Fehler in den Ortsdaten wurde erfolgreich korrigiert. 🚀
