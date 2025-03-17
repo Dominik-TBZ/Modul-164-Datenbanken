@@ -299,6 +299,143 @@ ORDER BY Schülername, Lehrer;
 ### SELECT GROUP BY
 🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_groupby_order.md)
 
+## 1. Einträge nur für Schafe im Jahr 2018 (absteigend nach `gebiet_name`)
+ 
+**Aufgabe**  
+Liste alle Einträge für `tierart = 'Schafe [Anz.]'` und `jahr = 2018`, sortiere in **absteigender** Reihenfolge (`DESC`) nach `gebiet_name`.
+ 
+**Lösung**  
+```sql
+SELECT *
+FROM nutztiere
+WHERE tierart = 'Schafe [Anz.]'
+  AND jahr = 2018
+ORDER BY gebiet_name DESC;
+```
+ 
+## 2. Gesamte Anzahl Schafe im Jahr 2018
+ 
+**Aufgabe**  
+Berechne die gesamte Anzahl Schafe (tierart = 'Schafe [Anz.]') für das Jahr 2018.
+ 
+**Lösung**  
+ 
+```sql
+SELECT SUM(anzahl) AS gesamt_schafe_2018
+FROM nutztiere
+WHERE tierart = 'Schafe [Anz.]'
+  AND jahr = 2018;
+```
+## 3. Durchschnittliche Anzahl Kühe in der Region Zürich (über alle Jahre)
+ 
+**Aufgabe**  
+Berechne den Durchschnitt (AVG()) der Kühe (tierart = 'Kühe [Anz.]') in der Region Zürich (gebiet_name = 'Region Zürich'), über alle Jahre hinweg.
+ 
+**Lösung**  
+ 
+```sql
+SELECT AVG(anzahl) AS avg_kuehe_region_zuerich
+FROM nutztiere
+WHERE tierart = 'Kühe [Anz.]'
+  AND gebiet_name = 'Region Zürich';
+ 
+```
+
+## 4. Grösste Anzahl Kühe in der Region Zürich (über alle Jahre)
+ 
+**Aufgabe**  
+Bestimme die grösste Anzahl (MAX()) an Kühen (tierart = 'Kühe [Anz.]') in der Region Zürich.
+ 
+**Lösung**  
+ 
+```sql
+ 
+SELECT MAX(anzahl) AS max_kuehe_region_zuerich
+FROM nutztiere
+WHERE tierart = 'Kühe [Anz.]'
+  AND gebiet_name = 'Region Zürich';
+ 
+```
+## 5. Kleinste Anzahl Kühe in der Region Zürich (über alle Jahre)
+ 
+**Aufgabe**  
+Bestimme die kleinste Anzahl (MIN()) an Kühen (tierart = 'Kühe [Anz.]') in der Region Zürich.
+ 
+**Lösung**  
+ 
+```sql
+SELECT MIN(anzahl) AS min_kuehe_region_zuerich
+FROM nutztiere
+WHERE tierart = 'Kühe [Anz.]'
+  AND gebiet_name = 'Region Zürich';
+ 
+```
+## 6. Totale Anzahl Nutztiere pro Region im Jahr 2016
+ 
+**Aufgabe**  
+Summiere die Anzahl aller Nutztiere (unabhängig von der Tierart) pro Region, aber nur für das Jahr 2016.
+ 
+**Lösung**  
+ 
+```sql
+SELECT gebiet_name,
+       SUM(anzahl) AS summe_nutztiere_2016
+FROM nutztiere
+WHERE jahr = 2016
+GROUP BY gebiet_name;
+ 
+```
+## 7. Totale Anzahl Nutztiere pro Region und pro Jahr
+ 
+**Aufgabe**  
+Summiere die Anzahl aller Nutztiere pro Region und pro Jahr über den gesamten Zeitraum.
+ 
+**Lösung**  
+ 
+```sql
+ 
+SELECT gebiet_name,
+       jahr,
+       SUM(anzahl) AS summe_nutztiere
+FROM nutztiere
+GROUP BY gebiet_name, jahr;
+
+```
+## 8. Totale Anzahl Nutztiere pro Region und pro Jahr, sortiert nach Jahr
+ 
+**Aufgabe**  
+Erweitere die vorige Abfrage und sortiere die Ergebnisse nach dem Jahr (ORDER BY jahr).
+ 
+**Lösung**  
+ 
+```sql
+ 
+SELECT gebiet_name,
+       jahr,
+       SUM(anzahl) AS summe_nutztiere
+FROM nutztiere
+GROUP BY gebiet_name, jahr
+ORDER BY jahr;
+ 
+```
+## 9. Totale Anzahl Nutztiere pro Region und pro Jahr, sortiert nach Jahr, aber nur ab 2015
+ 
+**Aufgabe**  
+Gib nur die Jahre ab 2015 (jahr >= 2015) aus. Summiere die Anzahl Nutztiere pro Region, gruppiere nach Region und Jahr und sortiere das Ergebnis nach dem Jahr.
+ 
+**Lösung**  
+ 
+```sql
+SELECT gebiet_name,
+       jahr,
+       SUM(anzahl) AS summe_nutztiere
+FROM nutztiere
+WHERE jahr >= 2015
+GROUP BY gebiet_name, jahr
+ORDER BY jahr;
+ 
+```
+
 ### SELECT SELECT HAVING
 🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_having.md)
 
