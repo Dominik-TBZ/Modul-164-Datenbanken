@@ -181,3 +181,19 @@ FROM ort AS o
 JOIN kunde AS k 
     ON o.postleitzahl = k.ort_postleitzahl
 WHERE o.name LIKE '%n';
+
+#### Statement 3:
+
+SELECT hrgs.kunde_id, hrgs.name, prfz.name 
+FROM kunde AS hrgs 
+INNER JOIN ort AS prfz 
+    ON prfz.postleitzahl = hrgs.ort_postleitzahl 
+ORDER BY hrgs.kunde_id;
+
+#### Statement 4:
+
+SELECT k.name, o.postleitzahl, o.name 
+FROM kunde AS k, ort AS o 
+WHERE k.name LIKE '%a%' 
+  AND o.name LIKE '%u%' 
+  AND k.ort_postleitzahl = o.postleitzahl;
