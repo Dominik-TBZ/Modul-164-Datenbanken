@@ -302,7 +302,6 @@ ORDER BY Schülername, Lehrer;
 ### SELECT SELECT HAVING
 🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_having.md)
 
-
 #### Aufgabe 1
 **a.**  Geben Sie eine Liste der Durchschnittsnoten (Deutsch, Mathe) aller Schüler aus; es werden aber nur die Schüler ausgegeben, deren Durchschnitt besser als 4 ist. Ausgabe: Schülername, Durchschnittsnote
 
