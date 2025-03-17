@@ -57,15 +57,11 @@ In professionellen Datenbanksystemen wird das **Löschen** von Datensätzen (z. 
  
 ##### Fremdschlüssel-Regeln beim Löschen ⚙️
  
-| **Regel**                              | **Beschreibung**                                                                                                                                                  |
-
-|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-| **ON DELETE NO ACTION (RESTRICT)**     | Ein `DELETE` in der Primärtabelle ist nur möglich, wenn keine verknüpften Detail-Datensätze existieren. (Standard, falls nichts anderes angegeben)               |
-
-| **ON DELETE CASCADE**                  | Das Löschen in der Primärtabelle führt zum automatischen Löschen aller zugehörigen Detail-Datensätze. (Vorsicht: Daten können unbeabsichtigt komplett verschwinden!) |
-
-| **ON DELETE SET NULL (DEFAULT)**       | Beim Löschen in der Primärtabelle wird der Fremdschlüssel in der Detailtabelle auf `NULL` oder einen Default-Wert gesetzt (nur möglich, wenn `NULL` erlaubt ist).  |
+| **Regel**                          | **Beschreibung**                                                                                                                                                   |
+|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **ON DELETE NO ACTION (RESTRICT)** | Ein `DELETE` in der Primärtabelle ist nur möglich, wenn keine verknüpften Detail-Datensätze existieren. (Standard, falls nichts anderes angegeben)               |
+| **ON DELETE CASCADE**              | Das Löschen in der Primärtabelle führt zum automatischen Löschen aller zugehörigen Detail-Datensätze. ⚠️ (Vorsicht: Daten können unbeabsichtigt komplett verschwinden!) |
+| **ON DELETE SET NULL (DEFAULT)**   | Beim Löschen in der Primärtabelle wird der Fremdschlüssel in der Detailtabelle auf `NULL` oder einen Default-Wert gesetzt. (Nur möglich, wenn `NULL` erlaubt ist)   |
  
 > **Fazit**: In den meisten Fällen ist es **sinnvoller**, Datensätze zu **historisieren** oder als **inaktiv** zu kennzeichnen, anstatt sie komplett aus der Datenbank zu löschen. So bleibt die **historische Information** erhalten und es gehen keine **wertvollen Daten** verloren. ✨
 
