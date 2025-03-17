@@ -252,3 +252,48 @@ SELECT COUNT(*) AS Anzahl_russischer_Schueler_Zelawat  FROM Schueler  WHERE Lehr
 #### 13. Lehrer mit dem höchsten Gehalt:
  
 SELECT Name, Gehalt FROM Lehrer WHERE Gehalt = (SELECT MAX(Gehalt) FROM Lehrer);
+
+### SELECT GROUP BY
+🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_group_by.md)
+
+#### Geben Sie die Anzahl aller Schüler aus, gruppiert nach Nationalität (Spalten: "Anzahl", "Nationalität").
+
+SELECT Nationalität, COUNT(*) AS Anzahl
+FROM tbl_schueler
+GROUP BY Nationalität;
+
+#### Wie viele Schüler wohnen in den einzelnen Orten? Ausgabe: "Ort", "Anzahl der Schüler" (bitte genauso), sortiert nach Anzahl der Schüler absteigend
+
+SELECT Ort, COUNT(*) AS `Anzahl der Schüler`
+FROM tbl_schueler
+GROUP BY Ort
+ORDER BY `Anzahl der Schüler` DESC;
+
+#### Erstellen Sie eine Liste, aus der ersichtlich wird, wie viele Lehrer die einzelnen Fächer unterrichten, sortiert nach Anzahl absteigend. Ausgabe: Fachbezeichnung, Anzahl
+
+SELECT Fachbezeichnung, COUNT(*) AS Anzahl
+FROM tbl_lehrerfaecher
+GROUP BY Fachbezeichnung
+ORDER BY Anzahl DESC;
+
+#### Erstellen Sie eine Liste, aus der ersichtlich wird, welche Lehrer die jeweiligen Fächer unterrichten, sortiert nach Anzahl der Lehrer absteigend. Pro Fach bitte nur eine Zeile! Ausgabe: Fachbezeichnung, Lehrerliste (bitte KEINE Spalte, in der die Anzahl der Lehrer steht).
+
+SELECT Fachbezeichnung, GROUP_CONCAT(CONCAT(Vorname, ' ', Name) ORDER BY Name SEPARATOR ', ') AS Lehrerliste
+FROM tbl_lehrerfaecher
+GROUP BY Fachbezeichnung
+ORDER BY COUNT(*) DESC;
+
+#### Wir brauchen eine Liste, die die Schülernamen auflistet und die Fächer, in denen diese Schüler unterrichtet werden. Ausgabe: "Schülername", "Lehrer", "Fächer"
+
+SELECT CONCAT(S.Vorname, ' ', S.Name) AS Schülername,
+       CONCAT(L.Vorname, ' ', L.Name) AS Lehrer,
+       GROUP_CONCAT(F.Fachbezeichnung ORDER BY F.Fachbezeichnung SEPARATOR ', ') AS Fächer
+FROM tbl_schueler S
+JOIN tbl_schuelerfaecher SF ON S.ID = SF.SchuelerID
+JOIN tbl_faecher F ON SF.FachID = F.ID
+JOIN tbl_lehrerfaecher LF ON F.ID = LF.FachID
+JOIN tbl_lehrer L ON LF.LehrerID = L.ID
+GROUP BY S.ID, L.ID
+ORDER BY Schülername, Lehrer;
+
+
