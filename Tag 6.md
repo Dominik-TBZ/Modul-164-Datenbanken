@@ -147,8 +147,6 @@ Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` 
 - Standard bei MySQL 8 oft `utf8mb4`.
 - Abweichungen (z. B. `latin1`) erfordern eine explizite Angabe via `CHARACTER SET`.
  
----
- 
 ##### CSV-Import mit `LOAD DATA INFILE`
 - **Trennzeichen (Delimiter)**, z. B. `,` oder `;`.
 - **Text-Qualifier**, z. B. `"` (Anführungszeichen).
@@ -156,25 +154,18 @@ Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` 
 - **Richtige Angabe** des Zeichenformats (CSV ≠ DB-Standard).
 - **Datumsumwandlung** mit `STR_TO_DATE` (z. B. `%d.%m.%Y`).
  
----
- 
 ##### Prüfung nach dem Import
 - `SELECT COUNT(*)` zum Zählen der Datensätze (z. B. 500 + 100).
 - Mögliche Fehler bei **doppelten IDs**, **Zeichensatzproblemen**, **falschen Datumsformaten** oder **fehlenden Spalten**.
- 
----
  
 ##### Löschen der Datenbank
 - `DROP DATABASE meine_datenbank;`  
   *(Achtung: irreversibel!)*
  
----
- 
 ##### Dokumentation im Lernportfolio
 - **Skripte** (`CREATE TABLE`, `LOAD DATA`, `DROP DATABASE`)
 - **Ergebnisse** (z. B. `SELECT COUNT(*)`, `SHOW WARNINGS;`)
 - **Erläuterung** der Fehlerursachen beim erneuten Einspielen von Datensätzen
- 
  
 #### Fazit
 - **Zeichensatz und CSV-Format** unbedingt vorab prüfen.
@@ -185,13 +176,6 @@ Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` 
   - Falsches Datumsformat,
   - Zeichensatzkonflikte.
 - **Datenbank aufräumen** (z. B. `DROP DATABASE …`) nach abgeschlossener Übung.
-
-
-
-
-
-
-
 
 ### Auftrag Load Date INFILE
 🔗 [GitLab Link Load Date INFILE](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
