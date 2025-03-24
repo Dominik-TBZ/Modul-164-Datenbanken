@@ -439,30 +439,33 @@ Anschließend werden alle doppelten Einträge gelöscht, sodass jeder Ortsname n
 ### Auftrag Checkpoint  
 🔗 [GitLab Link zum Checkpoint](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
  
-#### 1. Was sind die Vorteile der Arbeit mit Branches?
-Branches ermöglichen eine parallele Entwicklung von neuen Features oder Bugfixes, ohne den Hauptzweig (z.B. `main` oder `master`) zu beeinträchtigen. Dadurch wird die Zusammenarbeit im Team effizienter, und Konflikte bleiben überschaubar. Nach Abschluss einer Änderung können die Commits des Branches durch einen Merge wieder in den Hauptzweig integriert werden.
- 
-#### 2. Wann und warum sollte man einen Merge durchführen?
-Ein Merge wird durchgeführt, sobald die Arbeit in einem separaten Branch abgeschlossen ist und die Änderungen in den Hauptzweig einfließen sollen. So wird der Code-Stand aktualisiert und alle Teammitglieder können auf derselben Basis weiterarbeiten. Regelmäßige Merges verhindern große Konflikte und machen die Entwicklung transparenter.
- 
-#### 3. Wofür verwendet man Tags in Git?
-Tags werden eingesetzt, um wichtige Versionen oder Meilensteine zu kennzeichnen, etwa Release-Versionen. Dadurch lassen sich bestimmte Zustände im Projekt leicht wiederfinden und referenzieren. Ein Tag (z.B. `v1.0.0`) kann später schnell ausgecheckt werden, um exakt diesen Stand des Codes zu reproduzieren.
-  
-#### 4. Was ist der Unterschied zwischen `git merge` und `git rebase`?
-- **Merge**: Hier wird ein zusätzlicher Merge-Commit erzeugt, der die Entwicklungen beider Zweige zusammenführt. Die Historie zeigt eine Verzweigung und einen zusammenführenden Commit.  
-- **Rebase**: Dieser Befehl „hängt“ die Commits eines Branches auf einen anderen Branch und erzeugt somit eine lineare Historie, aber verändert die ursprüngliche Commit-Historie des Quell-Branches.
- 
-#### 5. Was ist ein 'Detached HEAD'-Zustand und wie löst man ihn?
-Der 'Detached HEAD'-Zustand tritt auf, wenn man auf einen Commit oder Tag wechselt, anstatt auf einen Branch. Git kann dann nicht zuordnen, in welchem Branch neue Commits abgelegt werden sollen. Man behebt dies, indem man entweder zurück in einen existierenden Branch wechselt (`git checkout main`) oder aus dem aktuellen Zustand einen neuen Branch erstellt (`git checkout -b neuer-branch`).
- 
-#### 6. Was tut `.gitignore`?
-Die `.gitignore`-Datei bestimmt, welche Dateien oder Ordner Git ignorieren soll, etwa temporäre Dateien oder Logs. Das hält das Repository schlank und schützt sensible oder unnötige Daten davor, versioniert zu werden.
- 
-#### 7. Wofür wird der Befehl `git stash` verwendet?
-`git stash` legt aktuelle, ungesicherte Änderungen in einem Zwischenspeicher (Stash) ab und stellt den Arbeitszweig wieder auf den letzten Commit-Zustand zurück. Das ist hilfreich, wenn man schnell den Branch wechseln muss, ohne die momentanen Änderungen zu verlieren. Später können die gestashten Änderungen mit `git stash pop` oder `git stash apply` wiederhergestellt werden.
- 
-#### 8. Warum sollte man regelmäßig Commits erstellen?
-Regelmäßige Commits machen Änderungen nachvollziehbar und erleichtern die Fehlersuche. Bei Bedarf kann man zu einem funktionierenden Stand zurückkehren. Außerdem bleiben Merge-Konflikte überschaubar, wenn kleine Änderungen in kurzen Abständen committet werden.
- 
-#### Zusammenfassung ganzer Tag 6
-Git ist ein verteiltes Versionskontrollsystem, das die Zusammenarbeit an Softwareprojekten vereinfacht. Branches erlauben paralleles Arbeiten, ohne sich gegenseitig zu blockieren. Durch regelmäßige Commits bleibt der Projektfortschritt klar nachvollziehbar. Mit Merge und Rebase können Branches effizient zusammengeführt werden, wobei Rebase eine lineare Historie erzeugt. Tags markieren wichtige Meilensteine wie Release-Versionen. Dank `.gitignore` werden unerwünschte Dateien nicht ins Repository aufgenommen. `git stash` ermöglicht einen schnellen Kontextwechsel ohne Datenverlust. Durch strukturiertes Branch-Management und das Lösen von Merge-Konflikten bleibt der Code konsistent. Am Ende sorgt Git für einen übersichtlichen und sicheren Entwicklungsprozess. So wird die Zusammenarbeit in Teams einfacher und effizienter.
+#### **1. Erklärung des Einsatzes von Subqueries**
+
+Subqueries (Unterabfragen) ermöglichen es, eine Abfrage innerhalb einer anderen Abfrage auszuführen, um komplexe Datenabfragen zu realisieren oder Zwischenergebnisse zu berechnen, die als Grundlage für die äußere Abfrage dienen.
+
+#### **2. Unterschied zwischen skalaren und nicht-skalaren Subqueries**
+
+- **Skalare Subquery:** Gibt genau einen einzelnen Wert zurück (eine Zeile, eine Spalte). Sie wird verwendet, wenn ein einzelner Wert für den Vergleich oder die Berechnung benötigt wird.  
+- **Nicht-skalare Subquery:** Gibt mehrere Werte zurück (mehrere Zeilen oder mehrere Spalten). Diese Art von Subquery wird verwendet, wenn mehrere Werte für den Vergleich oder die Bedingung benötigt werden.
+
+#### **3. Gefahren bei der Verwendung von Subselects**
+
+- **Leistungsprobleme:** Subqueries können die Datenbankleistung beeinträchtigen, insbesondere bei großen Datensätzen oder häufig ausgeführten Abfragen, da die Datenbank zusätzliche Verarbeitungsschritte ausführen muss.  
+- **Komplexität:** Subqueries können die Lesbarkeit und Wartbarkeit der SQL-Abfragen erschweren, was die Fehlersuche und Anpassungen komplizierter macht.  
+- **Fehleranfälligkeit:** Fehler können auftreten, wenn die Subquery unerwartet mehrere Werte zurückgibt, während die äußere Abfrage nur einen einzelnen Wert erwartet.
+
+#### 4. Bedeutung von `IGNORE 1 LINES` in `LOAD DATA INFILE`
+
+Der Zusatz `IGNORE 1 LINES` weist MySQL an, die erste Zeile der CSV-Datei zu überspringen. Dies ist nützlich, wenn die Datei eine Kopfzeile mit Spaltennamen enthält, die nicht importiert werden soll.
+
+#### **5. Folgen bei falschem Zeilenende bei CSV-Import**
+
+Wenn eine Windows-CSV-Datei mit Zeilenenden `\r\n` vorliegt, der Import aber mit `LINES TERMINATED BY '\n'` konfiguriert ist, bleibt das Carriage Return (`\r`) am Ende der letzten Spalte erhalten. Dies kann zu Problemen bei der Datenverarbeitung führen, da zusätzliche Zeichen die Genauigkeit von Vergleichen oder Berechnungen beeinflussen können.
+
+#### **6. Einstellungen für den CSV-Import vom Client zum Server**
+
+Um eine CSV-Datei vom Client zum Server zu importieren, muss der Benutzer die Berechtigung `FILE` besitzen. Außerdem muss die Servervariable `secure_file_priv` überprüft werden, um festzustellen, ob der Import aus dem gewünschten Verzeichnis erlaubt ist. Die CSV-Datei muss sich im erlaubten Verzeichnis befinden, damit der Import erfolgreich durchgeführt werden kann.
+
+#### **7. Importieren von Spalten in anderer Reihenfolge**
+
+Um Spalten in einer anderen Reihenfolge zu importieren, muss die Spaltenliste in der `LOAD DATA INFILE`-Anweisung explizit angegeben werden. Dies stellt sicher, dass die Spalten gemäß der angegebenen Reihenfolge in die Datenbanktabelle importiert werden, unabhängig von der Reihenfolge der Spalten in der CSV-Datei.
