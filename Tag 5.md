@@ -425,7 +425,8 @@ Gib nur die Jahre ab 2015 (jahr >= 2015) aus. Summiere die Anzahl Nutztiere pro 
  
 **Lösung**  
  
-```sql
+```
+sql
 SELECT gebiet_name,
        jahr,
        SUM(anzahl) AS summe_nutztiere
@@ -433,7 +434,6 @@ FROM nutztiere
 WHERE jahr >= 2015
 GROUP BY gebiet_name, jahr
 ORDER BY jahr;
- 
 ```
 
 ### SELECT SELECT HAVING
@@ -441,36 +441,36 @@ ORDER BY jahr;
 
 #### Aufgabe 1
 **a.**  Geben Sie eine Liste der Durchschnittsnoten (Deutsch, Mathe) aller Schüler aus; es werden aber nur die Schüler ausgegeben, deren Durchschnitt besser als 4 ist. Ausgabe: Schülername, Durchschnittsnote
-
+```
 SELECT 
     s.name AS Schülername,
     (s.deutsch + s.mathe) / 2 AS Durchschnittsnote
 FROM schueler s
 HAVING Durchschnittsnote > 4;
-
+```
 **b.**	Runden Sie in der vorigen Aufgabe die Durchschnittsnote auf eine Dezimale und sortieren Sie die Ausgabe nach der Durchschnittsnote aufsteigend.
-
+```
 SELECT 
     s.name AS Schülername,
     ROUND((s.deutsch + s.mathe) / 2, 1) AS Durchschnittsnote
 FROM schueler s
 HAVING Durchschnittsnote > 4
 ORDER BY Durchschnittsnote ASC;
-
+```
 #### Aufgabe 2
 
 **a.**  Geben Sie eine Liste aller Lehrer und ihres Nettogehalts (Gehalt * 0.7) aus. Wir wollen nur die Lehrer sehen, deren Nettogehalt mehr als 3000 Euro beträgt.
-
+```
 SELECT 
     l.name AS Lehrername,
     l.gehalt * 0.7 AS Nettogehalt
 FROM lehrer l
 WHERE (l.gehalt * 0.7) > 3000;
-
+```
 #### Aufgabe 3
 
 **a.**  Wir wollen herausbekommen, in welchen Klassenzimmern zu wenig Schüler unterrichtet werden. Geben Sie eine Liste der Klassenzimmer und die in diesen Klassenzimmern unterrichteten Schüler aus (Spalten "Klassenzimmer", "Anzahl"). Dabei interessieren uns nur die Klassenzimmer, in denen weniger als 10 Schüler sitzen.
-
+```
 SELECT 
     k.name AS Klassenzimmer,
     COUNT(s.id) AS Anzahl
@@ -478,11 +478,11 @@ FROM klassenzimmer k
 LEFT JOIN schueler s ON s.idKlassenzimmer = k.id
 GROUP BY k.id
 HAVING Anzahl < 10;
-
+```
 #### Aufgabe 4
 
 **a.**	Wie viele Schüler mit russischer Herkunft (Nationalität: "RU") wohnen in den einzelnen Orten? Geben Sie eine Liste aus mit "Anzahl" und "Ort-Name". Bitte nach Ort-Name aufsteigend sortieren.
-
+```
 SELECT 
     o.name AS Ort_Name,
     COUNT(s.id) AS Anzahl
@@ -491,9 +491,9 @@ JOIN orte o ON s.idOrte = o.id
 WHERE s.nationalitaet = 'RU'
 GROUP BY o.id
 ORDER BY Ort_Name ASC;
-
+```
 **b.** 	Erweitern Sie die Aufgabe 4.a so, dass nur die Orte ausgegeben werden, in denen 10 oder mehr russischstämmige Schüler wohnen.
-
+```
 SELECT 
     o.name AS Ort_Name,
     COUNT(s.id) AS Anzahl
@@ -503,3 +503,4 @@ WHERE s.nationalitaet = 'RU'
 GROUP BY o.id
 HAVING Anzahl >= 10
 ORDER BY Ort_Name ASC;
+```
