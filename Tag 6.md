@@ -94,3 +94,107 @@ JOIN buecher ON verlage.verlage_id = buecher.verlage_verlage_id
 GROUP BY verlage.verlage_id
 HAVING durchschnittsgewinn < 10;
 ```
+
+### Auftrag Load Date INFILE
+🔗 [GitLab Link Load Date INFILE](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
+
+#### 1. **Leere Felder und Datumsformat anpassen**
+
+```sql
+SET FOREIGN_KEY_CHECKS=0;
+Truncate tbl_Beispiel;
+
+LOAD DATA LOCAL INFILE 'C:/M164/bsp1.csv'
+REPLACE
+INTO TABLE tbl_Beispiel
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(ID_Beispiel, Name, @GD, Zahl, FS)
+SET Geb_Datum = STR_TO_DATE(@GD, '%d.%m.%Y');
+
+SELECT * FROM tbl_Beispiel;
+```
+
+In dieser Aufgabe wird das Datumsformat in der CSV-Datei mit der Funktion STR_TO_DATE() angepasst. Dies stellt sicher, dass das Datum im richtigen Format für das Geb_Datum-Feld gespeichert wird.
+
+#### 2. **Spaltenreihenfolge ändern**
+
+```sql
+Kopieren
+Truncate tbl_Beispiel; -- Leert Tabelle
+
+LOAD DATA LOCAL INFILE 'C:/M164/bsp1.csv'
+REPLACE
+INTO TABLE tbl_Beispiel
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(ID_Beispiel, @GD, Name, Zahl, FS)
+SET Geb_Datum = STR_TO_DATE(@GD, '%d.%m.%Y');
+
+SELECT * FROM tbl_Beispiel;
+```
+
+Die Reihenfolge der Spalten in der CSV-Datei stimmt nicht mit der Reihenfolge der Attribute in der Tabelle überein. Wir tauschen sie mit Hilfe der Variablen @GD und passen das Datum für das Geb_Datum-Feld an.
+
+### 3. **Spalten auslassen**
+
+```sql
+LOAD DATA LOCAL INFILE 'C:/M164/bsp3.csv'
+REPLACE
+INTO TABLE tbl_Beispiel
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(ID_Beispiel, Name, @GD, Zahl, FS, @SkipPW)
+SET Geb_Datum = STR_TO_DATE(@GD, '%d.%m.%Y');
+
+SELECT * FROM tbl_Beispiel;
+```
+
+In diesem Beispiel überspringen wir bestimmte Spalten der CSV-Datei, indem wir Dummy-Variablen wie @SkipPW verwenden.
+
+### 4. **Attribut hinzufügen**
+
+```sql
+Kopieren
+LOAD DATA LOCAL INFILE 'C:/M164/bsp4.csv'
+REPLACE
+INTO TABLE tbl_Beispiel
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(Name, Geb_Datum, Zahl)
+SET FS = 1; -- FS wird bei jedem DS auf 1 gesetzt
+
+SELECT * FROM tbl_Beispiel;
+```
+
+Hier wird ein fehlendes Attribut FS hinzugefügt, indem es für jede Zeile auf 1 gesetzt wird.
+
+### 5. **Werte ändern**
+
+```sql
+LOAD DATA LOCAL INFILE 'C:/M164/bsp5.csv'
+REPLACE
+INTO TABLE tbl_Beispiel
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(ID_Beispiel, @GD, Name, Zahl, @Ort)
+SET Geb_Datum = STR_TO_DATE(@GD, '%d.%m.%Y'),
+FS = CASE
+    WHEN @Ort = 'Zuerich' THEN 1
+    WHEN @Ort = 'Basel' THEN 2
+    WHEN @Ort = 'St.Gallen' THEN 3
+    ELSE NULL
+END;
+
+SELECT * FROM tbl_Beispiel;
+```
