@@ -27,6 +27,8 @@ WHERE ticket_price < (
 AND city_origin = 'Paris';
 ```
 
+![Subquery Bild](https://github.com/user-attachments/assets/a7977c4c-2a36-4985-92bf-2d45d619619d)
+
 #### Aufgabe 1
 
 **1. Welches ist das teuerste Buch in der Datenbank?**
