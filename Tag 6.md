@@ -376,7 +376,7 @@ CREATE TABLE db_adressen.tbl_Ort (
 );
 ```
 
-#### Schritt 4: Daten in die neuen Tabellen kopieren
+#### Schritt 4: Daten in die neuen Tabellen einfügen
 ```
 INSERT INTO db_adressen.tbl_PersonSELECT ID, Name, Age FROM db_adressen.tbl_Adr;
 ```
@@ -428,7 +428,7 @@ UPDATE tbl_StrSET Ort_FK = (
 ```
 #### Schritt 4: Redundante Orts-Einträge löschen
 ```
-DELETE FROM tbl_OrtWHERE Ort_ID NOT IN (SELECT t.Ort_ID FROM temp_Orte t);
+DELETE FROM tbl_Ort WHERE Ort_ID NOT IN (SELECT t.Ort_ID FROM temp_Orte t);
 ```
 **Erklärung:**
 Die erste Abfrage zeigt Orte, die mehrfach eingetragen sind.
