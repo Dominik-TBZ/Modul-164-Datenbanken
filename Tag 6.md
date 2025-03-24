@@ -61,7 +61,7 @@ WHERE (verkaufspreis - einkaufspreis) >
 ```
 #### Aufgabe 2
 
-1. Summe der durchschnittlichen Einkaufspreise der Sparten (ohne Humor und mit Einkaufspreis > 10 Euro)
+**1. Summe der durchschnittlichen Einkaufspreise der Sparten (ohne Humor und mit Einkaufspreis > 10 Euro)**
 ```
 SELECT SUM(durchschnittspreis) AS summe_durchschnittspreise
 FROM (
@@ -73,7 +73,7 @@ FROM (
     HAVING sparten.bezeichnung != 'Humor' AND AVG(buecher.einkaufspreis) > 10
 ) AS subquery;
 ```
-2. Anzahl der "bekannten Autoren" (mehr als 4 Bücher veröffentlicht)
+**2. Anzahl der "bekannten Autoren" (mehr als 4 Bücher veröffentlicht)**
 ```
 SELECT COUNT(*) AS anzahl_bekannte_autoren
 FROM (
@@ -84,7 +84,7 @@ FROM (
     HAVING COUNT(*) > 4
 ) AS bekannte_autoren;
 ```
-3. Verlage mit durchschnittlichem Gewinn < 10 Euro und Überprüfung des Chef-Verdachts
+**3. Verlage mit durchschnittlichem Gewinn < 10 Euro und Überprüfung des Chef-Verdachts**
 ```
 SELECT verlage.name, AVG(buecher.verkaufspreis - buecher.einkaufspreis) AS durchschnittsgewinn
 FROM verlage
