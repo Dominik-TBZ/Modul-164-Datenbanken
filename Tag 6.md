@@ -199,6 +199,38 @@ END;
 SELECT * FROM tbl_Beispiel;
 ```
 
+### Auftrag Datenbasis / Datenadressen  
+🔗 [GitLab Link zu Datenbasis / Datenadressen ](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/6.Tag/select_Subquery.md)
+
+#### **Kurzzusammenfassung / Wichtige Stichpunkte**
+ 
+#### Ziel
+- **DB `db_adressen`** erstellen  
+- **CSV-Datei (`adressen.csv`)** mit 10 Datensätzen importieren  
+- Daten in **3. Normalform** aufteilen (Person, Straße, Ort)
+ 
+#### Ablauf
+1. **Temporäre Tabelle `tbl_Adr`** anlegen  
+2. **CSV** mit `LOAD DATA LOCAL INFILE` importieren (inkl. Prüfung Sonderzeichen/Umlaute)  
+3. **Normalisieren**: Tabellen `tbl_Person`, `tbl_Str`, `tbl_Ort` erstellen  
+4. Daten per `INSERT ... SELECT` aus `tbl_Adr` in die normalisierten Tabellen übertragen (FK-Beziehungen beachten)  
+5. Überprüfen per `SELECT ... JOIN ... JOIN ...`
+ 
+#### Direktimport
+- **Alternative**: CSV direkt in die drei Normalform-Tabellen laden  
+- Entsprechende Skip/Set-Attribute im `LOAD DATA`-Befehl beachten
+ 
+#### Redundanz
+- Finden und Bereinigen doppelter Orts-Einträge mittels `GROUP BY`, `TEMPORARY TABLE`, `UPDATE` und `DELETE`
+ 
+#### Wichtige SQL-Stichworte
+- `CREATE DATABASE db_adressen;`
+- `LOAD DATA LOCAL INFILE ...` (Zeichensatz, Delimiter usw. prüfen)
+- `INSERT INTO ... SELECT ...`
+- `JOIN` (Prüfung der importierten Daten)
+- `TEMPORARY TABLE` (zur Zusammenführung doppelter Datensätze)
+- `DELETE` (zur Entfernung redundanter Einträge)
+
 ### Auftrag Checkpoint  
 🔗 [GitLab Link zum Checkpoint](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
  
