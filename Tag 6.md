@@ -98,6 +98,14 @@ HAVING durchschnittsgewinn < 10;
 ### Auftrag Load Date INFILE
 🔗 [GitLab Link Load Date INFILE](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
 
+#### Zusammenfassung
+
+- **CSV-Import mit `LOAD DATA LOCAL INFILE`**: Zeichensatz, Delimiter und Zeilenende angeben; Kopfzeilen mit `IGNORE X ROWS` überspringen.
+- **Variablen & Datumsformat**: Via `@var` einlesen, anschließend mit `STR_TO_DATE(@var, '%d.%m.%Y')` in Spalten speichern.
+- **Spalten überspringen**: Unnötige CSV-Spalten als Dummy (`@Skip`) definieren; fehlende Felder per `SET` (z. B. `FS = 1`) ergänzen.
+- **Constraints/Warnungen**: Bei Fremdschlüsseln ggf. `SET FOREIGN_KEY_CHECKS=0;` verwenden; `SHOW WARNINGS;` nach dem Import prüfen.
+- **Normalisierung**: Daten aus einer Zwischentabelle mittels `INSERT ... SELECT ...` in mehrere Tabellen verteilen.
+
 #### 1. **Leere Felder und Datumsformat anpassen**
 
 ```sql
