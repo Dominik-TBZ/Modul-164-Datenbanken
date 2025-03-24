@@ -95,6 +95,104 @@ GROUP BY verlage.verlage_id
 HAVING durchschnittsgewinn < 10;
 ```
 
+### Auftrag Daten Importieren  
+🔗 [GitLab Link zu Daten Importieren](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
+
+##### Bulkimport: Mysql Data Loader LOAD DATA INFILE
+ 
+##### MySQL/MariaDB: Daten schnell und effizient aus CSV-Dateien importieren
+ 
+Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` (clientseitig) lassen sich CSV-Dateien sehr performant in MySQL-/MariaDB-Tabellen laden. Im Folgenden sind die wichtigsten Hinweise, Einstellungen und ein kurzes Beispiel-Tutorial zusammengefasst.
+
+---
+
+###### 1. Unterschiede: Serverseitiger vs. Clientseitiger Import
+ 
+###### Serverseitig: `LOAD DATA INFILE`
+- **Syntax-Beispiel**:
+  ```sql
+  LOAD DATA INFILE '/Pfad/zur/datei.csv'
+  INTO TABLE deine_tabelle
+  FIELDS TERMINATED BY ','
+  OPTIONALLY ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES
+  (spalte1, spalte2, …);
+ 
+ 
+**Zusammenfassung:**  
+- **LOAD DATA INFILE** (ohne LOCAL) lädt eine CSV-Datei vom Server-Dateisystem in MySQL/MariaDB.  
+  - Pfadangaben in MySQL/MariaDB **immer** mit Schrägstrichen `/` verwenden.  
+  - Sonderzeichen (z.B. Umlaute) in Dateinamen vermeiden (z.B. `Schueler.csv` statt `Schüler.csv`).  
+  - Bei Fehlermeldung `Error 13 "Permission denied"` ggf. anderen Ordner nutzen (z.B. `C:/M164/`).  
+ 
+- **LOAD DATA LOCAL INFILE** (mit `LOCAL`) lädt eine CSV-Datei vom **Client-Dateisystem** und sendet sie an den Server.  
+ 
+- **Voraussetzungen/Einstellungen**:  
+  1. **Serverseitig**  
+     - `SET GLOBAL local_infile = 1;`  
+     - Mit `SHOW GLOBAL VARIABLES LIKE 'local_infile';` prüfen.  
+     - `SHOW VARIABLES LIKE 'secure_file_priv';` sollte keinen Pfad enthalten (oder `secure_file_priv = ""` in der `my.ini` im Abschnitt `[mysqld]`).  
+ 
+  2. **Clientseitig**  
+     - In der `my.ini` (Abschnitt `[mysql]`) `MYSQL_OPT_LOCAL_INFILE=1` setzen.  
+     - Falls MySQL Workbench genutzt wird, in den **Connection-Einstellungen** unter **Advanced > Others** `OPT_LOCAL_INFILE=1` hinzufügen.  
+     - Bei anderen Clients/Bibliotheken entsprechende Dokumentation beachten.  
+ 
+- **Serverneustart** (z.B. über XAMPP oder Dienstmanager) erforderlich, um Änderungen zu übernehmen.
+ 
+#### Wichtigste Begriffe und Kernelemente des Auftrags
+ 
+##### Zeichensatz (`character_set_database`)
+- Standard bei MySQL 8 oft `utf8mb4`.
+- Abweichungen (z. B. `latin1`) erfordern eine explizite Angabe via `CHARACTER SET`.
+ 
+---
+ 
+##### CSV-Import mit `LOAD DATA INFILE`
+- **Trennzeichen (Delimiter)**, z. B. `,` oder `;`.
+- **Text-Qualifier**, z. B. `"` (Anführungszeichen).
+- **Spaltennamen** in der ersten Zeile (ggf. `IGNORE 1 LINES`).
+- **Richtige Angabe** des Zeichenformats (CSV ≠ DB-Standard).
+- **Datumsumwandlung** mit `STR_TO_DATE` (z. B. `%d.%m.%Y`).
+ 
+---
+ 
+##### Prüfung nach dem Import
+- `SELECT COUNT(*)` zum Zählen der Datensätze (z. B. 500 + 100).
+- Mögliche Fehler bei **doppelten IDs**, **Zeichensatzproblemen**, **falschen Datumsformaten** oder **fehlenden Spalten**.
+ 
+---
+ 
+##### Löschen der Datenbank
+- `DROP DATABASE meine_datenbank;`  
+  *(Achtung: irreversibel!)*
+ 
+---
+ 
+##### Dokumentation im Lernportfolio
+- **Skripte** (`CREATE TABLE`, `LOAD DATA`, `DROP DATABASE`)
+- **Ergebnisse** (z. B. `SELECT COUNT(*)`, `SHOW WARNINGS;`)
+- **Erläuterung** der Fehlerursachen beim erneuten Einspielen von Datensätzen
+ 
+ 
+#### Fazit
+- **Zeichensatz und CSV-Format** unbedingt vorab prüfen.
+- **Passende Tabellenspalten** erstellen (korrekte Datentypen).
+- **`LOAD DATA INFILE`**: Delimiter, Enclosure, Zeichensatz und Datumsumwandlung beachten.
+- **Zusätzlicher Import** kann scheitern durch:
+  - Duplikate (z. B. doppelte Primärschlüssel),
+  - Falsches Datumsformat,
+  - Zeichensatzkonflikte.
+- **Datenbank aufräumen** (z. B. `DROP DATABASE …`) nach abgeschlossener Übung.
+
+
+
+
+
+
+
+
 ### Auftrag Load Date INFILE
 🔗 [GitLab Link Load Date INFILE](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/6.Tag?ref_type=heads)
 
