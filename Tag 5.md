@@ -169,122 +169,122 @@ Dank dieser schrittweisen Anpassung bleibt die referentielle Integrität der Dat
 🔗 [GitLab Link zu SELECT Alias](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/SELECT_ALIAS.md)
 
 #### Statement 1: Ausgabe von kunde_id, Name und Postleitzahl für Kunden mit PLZ > 80000
-
+```
 SELECT kunde_id, name, ort_postleitzahl 
 FROM kunde AS kundenliste 
 WHERE kundenliste.ort_postleitzahl > 80000;
-
+```
 #### Statement 2: Ausgabe von Ort-Name und Kunden-Name für Orte, deren Name auf 'n' endet
-
+```
 SELECT o.name, k.name 
 FROM ort AS o
 JOIN kunde AS k 
     ON o.postleitzahl = k.ort_postleitzahl
 WHERE o.name LIKE '%n';
-
+```
 #### Statement 3:
-
+```
 SELECT hrgs.kunde_id, hrgs.name, prfz.name 
 FROM kunde AS hrgs 
 INNER JOIN ort AS prfz 
     ON prfz.postleitzahl = hrgs.ort_postleitzahl 
 ORDER BY hrgs.kunde_id;
-
+```
 #### Statement 4:
-
+```
 SELECT k.name, o.postleitzahl, o.name 
 FROM kunde AS k, ort AS o 
 WHERE k.name LIKE '%a%' 
   AND o.name LIKE '%u%' 
   AND k.ort_postleitzahl = o.postleitzahl;
-
+```
 ### Aggregatsfunktionen
 🔗 [GitLab Link zu den Aggregatsfunktionen](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/Aggregatsfunktionen.md)
 
 #### 1. Welches ist das niedrigste/höchste Gehalt eines Lehrers?
-
+```
 SELECT MIN(Gehalt) AS niedrigstes_Gehalt, MAX(Gehalt) AS höchstes_Gehalt FROM Lehrer;
- 
+```
 #### 2. Niedrigstes Gehalt eines Mathelehrers:
- 
+```
 SELECT MIN(Gehalt) AS niedrigstes_Gehalt FROM Lehrer WHERE Fach = 'Mathematik';
- 
+``` 
 #### 3. Bester Notendurchschnitt in Deutsch/Mathe:
- 
+``` 
 SELECT MIN((Deutsch + Mathe) / 2) AS bester_Notendurchschnitt FROM Noten;
- 
+``` 
 #### 4. Höchste/niedrigste Einwohnerzahl eines Ortes:
- 
+``` 
 SELECT MAX(Einwohnerzahl) AS höchste_Einwohnerzahl, MIN(Einwohnerzahl) AS niedrigste_Einwohnerzahl FROM Orte;
- 
+``` 
 #### 5. Differenz zwischen größtem und kleinstem Ort:
- 
+``` 
 SELECT (MAX(Einwohnerzahl) - MIN(Einwohnerzahl)) AS Differenz FROM Orte;
- 
+``` 
 #### 6. Anzahl der Schüler in der Datenbank:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_Schueler FROM Schueler;
- 
+``` 
 #### 7. Anzahl der Schüler mit einem Smartphone:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_mit_Smartphone FROM Schueler WHERE Smartphone IS NOT NULL;
- 
+``` 
 #### 8. Anzahl der Schüler mit einem Samsung- oder HTC-Smartphone:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_Samsung_HTC FROM Schueler WHERE Smartphone IN ('Samsung', 'HTC');
- 
+``` 
 #### 9. Anzahl der Schüler in Waldkirch:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_Waldkirch FROM Schueler WHERE Wohnort = 'Waldkirch';
- 
+``` 
 #### 10. Schüler bei Herrn Bohnert, die in Emmendingen wohnen:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_Schueler_Bohnert_Emmendingen  FROM Schueler  WHERE Lehrer_ID = (SELECT Lehrer_ID FROM Lehrer WHERE Name = 'Bohnert')  AND Wohnort = 'Emmendingen';
- 
+```
 #### 11. Anzahl der Schüler, die Frau Zelawat unterrichtet:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_Schueler_Zelawat  FROM Schueler  WHERE Lehrer_ID = (SELECT Lehrer_ID FROM Lehrer WHERE Name = 'Zelawat');
- 
+``` 
 #### 12. Anzahl der Schüler russischer Nationalität bei Frau Zelawat:
- 
+``` 
 SELECT COUNT(*) AS Anzahl_russischer_Schueler_Zelawat  FROM Schueler  WHERE Lehrer_ID = (SELECT Lehrer_ID FROM Lehrer WHERE Name = 'Zelawat')  AND Nationalität = 'Russisch';
- 
+``` 
 #### 13. Lehrer mit dem höchsten Gehalt:
- 
+``` 
 SELECT Name, Gehalt FROM Lehrer WHERE Gehalt = (SELECT MAX(Gehalt) FROM Lehrer);
-
+```
 ### SELECT GROUP BY
 🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_group_by.md)
 
 #### Geben Sie die Anzahl aller Schüler aus, gruppiert nach Nationalität (Spalten: "Anzahl", "Nationalität").
-
+```
 SELECT Nationalität, COUNT(*) AS Anzahl
 FROM tbl_schueler
 GROUP BY Nationalität;
-
+```
 #### Wie viele Schüler wohnen in den einzelnen Orten? Ausgabe: "Ort", "Anzahl der Schüler" (bitte genauso), sortiert nach Anzahl der Schüler absteigend
-
+```
 SELECT Ort, COUNT(*) AS `Anzahl der Schüler`
 FROM tbl_schueler
 GROUP BY Ort
 ORDER BY `Anzahl der Schüler` DESC;
-
+```
 #### Erstellen Sie eine Liste, aus der ersichtlich wird, wie viele Lehrer die einzelnen Fächer unterrichten, sortiert nach Anzahl absteigend. Ausgabe: Fachbezeichnung, Anzahl
-
+```
 SELECT Fachbezeichnung, COUNT(*) AS Anzahl
 FROM tbl_lehrerfaecher
 GROUP BY Fachbezeichnung
 ORDER BY Anzahl DESC;
-
+```
 #### Erstellen Sie eine Liste, aus der ersichtlich wird, welche Lehrer die jeweiligen Fächer unterrichten, sortiert nach Anzahl der Lehrer absteigend. Pro Fach bitte nur eine Zeile! Ausgabe: Fachbezeichnung, Lehrerliste (bitte KEINE Spalte, in der die Anzahl der Lehrer steht).
-
+```
 SELECT Fachbezeichnung, GROUP_CONCAT(CONCAT(Vorname, ' ', Name) ORDER BY Name SEPARATOR ', ') AS Lehrerliste
 FROM tbl_lehrerfaecher
 GROUP BY Fachbezeichnung
 ORDER BY COUNT(*) DESC;
-
+```
 #### Wir brauchen eine Liste, die die Schülernamen auflistet und die Fächer, in denen diese Schüler unterrichtet werden. Ausgabe: "Schülername", "Lehrer", "Fächer"
-
+```
 SELECT CONCAT(S.Vorname, ' ', S.Name) AS Schülername,
        CONCAT(L.Vorname, ' ', L.Name) AS Lehrer,
        GROUP_CONCAT(F.Fachbezeichnung ORDER BY F.Fachbezeichnung SEPARATOR ', ') AS Fächer
@@ -295,7 +295,7 @@ JOIN tbl_lehrerfaecher LF ON F.ID = LF.FachID
 JOIN tbl_lehrer L ON LF.LehrerID = L.ID
 GROUP BY S.ID, L.ID
 ORDER BY Schülername, Lehrer;
-
+```
 ### SELECT GROUP BY
 🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_groupby_order.md)
 
