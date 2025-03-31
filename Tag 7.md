@@ -92,3 +92,7 @@ mariabackup --copy-back --target-dir="C:\Users\dominik.willisch.sch\Documents\Be
 ### Auftrag Daten normalisiert einbinden  
 🔗 [GitLab Link zu Daten normalisiert einbinden](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/7.Tag?ref_type=heads)
 
+![Image](https://github.com/user-attachments/assets/152acf90-68c1-4225-b902-7eddde411d75)
+![Image](https://github.com/user-attachments/assets/dea7ba60-b4cf-4849-9285-dc6654ada831)
+![Image](https://github.com/user-attachments/assets/d69399d3-7087-456c-a17a-478bd121a66a)
+![Image](https://github.com/user-attachments/assets/93a75bea-a41a-444a-9a35-ea7cdabc5da2)
