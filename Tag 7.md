@@ -20,6 +20,8 @@ Zusätzlich unterscheidet man drei Backup-Arten:
 2. **Differentielles Backup**: Speichert nur geänderte und neue Dateien seit dem letzten Voll-Backup.
 3. **Inkrementelles Backup**: Speichert nur Änderungen seit der letzten Sicherung (egal ob Voll- oder inkrementelles Backup).
 
+![Daarstellung Backupmethoden](https://github.com/user-attachments/assets/9df8f3f6-ab65-469f-b251-b58a19770c7f)
+
 #### Backup-Tools
 Zur Durchführung von Backups gibt es verschiedene Tools:
 
