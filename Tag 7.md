@@ -31,7 +31,7 @@ Zur Durchführung von Backups gibt es verschiedene Tools:
 - **HeidiSQL**: Windows-Tool ohne Automatisierungsfunktionen.
 - **Mariabackup**: Open-Source-Lösung für physische Online-Backups von MariaDB.
 
-#### Auftrag Dumbfile aus MySQL Workbench erstellen
+#### Auftrag 1; Dumbfile aus MySQL Workbench erstellen
 
 ##### **--> Tabellen auswählen, von welchen ein Backup gemacht werden soll.**
 
@@ -44,3 +44,51 @@ Zur Durchführung von Backups gibt es verschiedene Tools:
 ##### **--> Danach werden die Daten in SQL Files gespeichert.**
 
 ![Bild3](https://github.com/user-attachments/assets/8af1305d-21c6-402c-b0e4-f65cca48f8db)
+
+#### Auftrag 2; Backup-File analysieren und verifizieren
+
+Viele Codekommentare zur Erklärung der Schritte.
+SQL-Befehle zur Erstellung der Datenbankstruktur (CREATE DATABASE, CREATE TABLE) und zum Einfügen von Daten (INSERT INTO).
+
+Die Datenbank konnte nach der Löschung wieder vollständig hergestellt werden.
+
+#### Auftrag 3; Backup Strategien
+
+##### a. Backup-Typ in Aufgabe 1
+Logisches Backup (SQL-Befehle zur Erstellung und Befüllung der Datenbank).
+
+##### b. Nachteile dieses Backups
+Langsame Wiederherstellung.
+
+Abhängig von der Systemumgebung.
+
+##### Unterschied Online- vs. Offline-Backups
+**Online:** Datenbank bleibt während des Backups aktiv.
+
+**Offline:** Datenbank muss für das Backup gestoppt werden.
+
+##### Was ist ein Snapshot-Backup?
+Eine Momentaufnahme der Datenbank, die konsistent und schnell ist, ohne dass die Datenbank gestoppt werden muss.
+
+#### Auftrag 4; Physisches Backup (Variante MariaDB, XAMPP)
+
+**Erstellen Sie ein Full-Backup mit dem Backup-Programm mariabackup.exe.**
+```
+mariabackup --backup --target-dir=/path/to/backup
+```
+**Wozu muss die Backupdatenstruktur vor einem Restore "vorbereitet" (prepare) werden?**
+```
+mariabackup --prepare --target-dir=/path/to/backup
+```
+**Wie heist der Parameter, um ein Restore zu machen?**
+```
+mariabackup --copy-back --target-dir=/path/to/backup
+```
+**Ist ein inkrementelles und differentielles Backup möglich? Wenn ja, wie?**
+**Inkrementell:** Sichert nur Änderungen seit dem letzten vollständigen Backup.
+
+**Differentiell:** Sichert Änderungen seit dem letzten vollständigen oder differenziellen Backup.
+
+### Auftrag Daten normalisiert einbinden  
+🔗 [GitLab Link zu Daten normalisiert einbinden](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/7.Tag?ref_type=heads)
+
