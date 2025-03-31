@@ -31,14 +31,14 @@ Zur Durchführung von Backups gibt es verschiedene Tools:
 
 #### Auftrag Dumbfile aus MySQL Workbench erstellen
 
-##### **Auf Data Export klicken um die Daten zu exportieren / Backup erstellen.**
+##### **--> Auf Data Export klicken um die Daten zu exportieren / Backup erstellen.**
 
 ![Bild1](https://github.com/user-attachments/assets/2ff43646-79e5-472e-a53c-7c7196460d33)
 
-##### **Tabellen auswählen, von welchen ein Backup gemacht werden soll.**
+##### **--> Tabellen auswählen, von welchen ein Backup gemacht werden soll.**
 
 ![Bild2](https://github.com/user-attachments/assets/a381258b-9781-4c88-acb7-5637bd51c3c3)
 
-##### **Danach werden die Daten in SQL Files gespeichert.**
+##### **--> Danach werden die Daten in SQL Files gespeichert.**
 
 ![Bild3](https://github.com/user-attachments/assets/8af1305d-21c6-402c-b0e4-f65cca48f8db)
