@@ -74,15 +74,15 @@ Eine Momentaufnahme der Datenbank, die konsistent und schnell ist, ohne dass die
 
 **Erstellen Sie ein Full-Backup mit dem Backup-Programm mariabackup.exe.**
 ```
-mariabackup --backup --target-dir=/path/to/backup
+mariabackup --backup --target-dir="C:\Users\dominik.willisch.sch\Documents\Berufsschule (TBZ)\Modul 164; Datenbank erstellen\Prüfungsvorbereitung LB2\Tabellen.sql"
 ```
 **Wozu muss die Backupdatenstruktur vor einem Restore "vorbereitet" (prepare) werden?**
 ```
-mariabackup --prepare --target-dir=/path/to/backup
+mariabackup --prepare --target-dir="C:\Users\dominik.willisch.sch\Documents\Berufsschule (TBZ)\Modul 164; Datenbank erstellen\Prüfungsvorbereitung LB2\Tabellen.sql"
 ```
 **Wie heist der Parameter, um ein Restore zu machen?**
 ```
-mariabackup --copy-back --target-dir=/path/to/backup
+mariabackup --copy-back --target-dir="C:\Users\dominik.willisch.sch\Documents\Berufsschule (TBZ)\Modul 164; Datenbank erstellen\Prüfungsvorbereitung LB2\Tabellen.sql"
 ```
 **Ist ein inkrementelles und differentielles Backup möglich? Wenn ja, wie?**
 **Inkrementell:** Sichert nur Änderungen seit dem letzten vollständigen Backup.
