@@ -99,7 +99,6 @@ mariabackup --copy-back --target-dir="C:\Users\dominik.willisch.sch\Documents\Be
 #### 2. Erstellen Sie das log. ERD. Die (5) Tabellen müssen mind. in der 2.NF sein. Bestimmen Sie die Kardinalitäten.
 
 ![Datenmodell](https://github.com/user-attachments/assets/93a75bea-a41a-444a-9a35-ea7cdabc5da2)
-![Datenmodell](https://github.com/user-attachments/assets/8a224bba-1494-42f6-91c9-98adfa7c85ad)
 
 #### 3. Erstellen Sie das physische ERD und setzen Sie die ersichtlichen, nötigen NN- und UQ-Eigenschaften (Constraints) bei den Attributen und Fremdschlüsseln. Erzeugen Sie durch z.B. Forward Engineering ein SQL-DDL-Script (Datentypen, FK-Constriants, Constaint-Optionen).
 
