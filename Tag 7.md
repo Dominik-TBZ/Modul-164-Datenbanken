@@ -162,4 +162,4 @@ Ich habe die Daten bereinigt und alle Datensätze mit Null werten gelöscht.
 
 #### 6. Testen Sie die eingelesenen Daten! Vergleichen Sie die Tabellenwerte der CSV-Dateien mit den gleichen, angepassten Select-Abfragen aus ihrer normalisierten Datenbank. Die Ausgabelisten sollten dieselben sein!
 
-![Daten](https://github.com/user-attachments/assets/d69399d3-7087-456c-a17a-478bd121a66a)
+![Daten](https://github.com/user-attachments/assets/dc907660-8eba-48be-b603-6f3c0bb12eaa)
