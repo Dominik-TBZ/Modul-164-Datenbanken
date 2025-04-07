@@ -92,6 +92,16 @@ mariabackup --copy-back --target-dir="C:\Users\dominik.willisch.sch\Documents\Be
 ### Auftrag Daten normalisiert einbinden
 🔗 [GitLab Link zu Daten normalisiert einbinden](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/7.Tag?ref_type=heads)
 
+#### 1. Erstellen Sie die erste Normalform der EXCEL-Tabelle und exportieren Sie die Daten als CSV-Dateien. (Atomare Felder, Redundanz wird bewusst erzeugt).
+
+![CSV - Dateien](https://github.com/user-attachments/assets/6e911612-2bf2-4481-b2ce-1b18c6df4233)
+
+#### 2. Erstellen Sie das log. ERD. Die (5) Tabellen müssen mind. in der 2.NF sein. Bestimmen Sie die Kardinalitäten.
+
+![Datenmodell](https://github.com/user-attachments/assets/93a75bea-a41a-444a-9a35-ea7cdabc5da2)
+
+#### 3. Erstellen Sie das physische ERD und setzen Sie die ersichtlichen, nötigen NN- und UQ-Eigenschaften (Constraints) bei den Attributen und Fremdschlüsseln. Erzeugen Sie durch z.B. Forward Engineering ein SQL-DDL-Script (Datentypen, FK-Constriants, Constaint-Optionen).
+
 ```
 -- Datenbank löschen und neu erstellen
 DROP DATABASE IF EXISTS Schule;
@@ -142,27 +152,14 @@ CREATE TABLE Lehrer_Freifach (
 );
 ```
 
-![Image](https://github.com/user-attachments/assets/d69399d3-7087-456c-a17a-478bd121a66a)
-
-#### 1. Erstellen Sie die erste Normalform der EXCEL-Tabelle und exportieren Sie die Daten als CSV-Dateien. (Atomare Felder, Redundanz wird bewusst erzeugt).
-
-![CSV - Dateien](https://github.com/user-attachments/assets/6e911612-2bf2-4481-b2ce-1b18c6df4233)
-
-#### 2. Erstellen Sie das log. ERD. Die (5) Tabellen müssen mind. in der 2.NF sein. Bestimmen Sie die Kardinalitäten.
-
-![Datenmodell](https://github.com/user-attachments/assets/93a75bea-a41a-444a-9a35-ea7cdabc5da2)
-
-#### 3. Erstellen Sie das physische ERD und setzen Sie die ersichtlichen, nötigen NN- und UQ-Eigenschaften (Constraints) bei den Attributen und Fremdschlüsseln. Erzeugen Sie durch z.B. Forward Engineering ein SQL-DDL-Script (Datentypen, FK-Constriants, Constaint-Optionen).
-
-
-
 #### 4. Übertragen Sie die Daten der CSV-Dateien in die normalisierten Tabellen mittels LOAD DATA LOCAL INFILE (direkt oder indirekt). Überwachen Sie die korrekte Übertragung der Beziehungen (FK=ID).
 
-
+![Load Data Infile](https://github.com/user-attachments/assets/89030661-4d9e-4f9e-962c-565a9b141a31)
 
 #### 5. Bereinigen Sie die Daten (Redundanz, leere Werte, Inkonsistenz). Benutzen Sie wenn nötig die Scripte aus Tag 6! als Vorlage.
 
-
+Ich habe die Daten bereinigt und alle Datensätze mit Null werten gelöscht. 
 
 #### 6. Testen Sie die eingelesenen Daten! Vergleichen Sie die Tabellenwerte der CSV-Dateien mit den gleichen, angepassten Select-Abfragen aus ihrer normalisierten Datenbank. Die Ausgabelisten sollten dieselben sein!
 
+![Daten](https://github.com/user-attachments/assets/d69399d3-7087-456c-a17a-478bd121a66a)
