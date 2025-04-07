@@ -179,5 +179,10 @@ ORDER BY SteuerEinkommen_p50 DESC
 LIMIT 1;
 ```
 
-#### 6. Erstellen Sie ein Backup dar Datenbank.
+#### 6. Erstellen Sie ein Backup der Datenbank.
 
+```
+"C:\xampp\mysql\bin\mysqldump.exe" -u root -p steuern > "C:\Users\dominik.willisch.sch\Documents\Berufsschule (TBZ)\Modul 164; Datenbank erstellen\Prüfungsvorbereitung LB2\Backup.sql"
+```
+
+![Backup Datei](https://github.com/user-attachments/assets/fbfa90a4-7b88-41df-8455-3e115daaacdd)
