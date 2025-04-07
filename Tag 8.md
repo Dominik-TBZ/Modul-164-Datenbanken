@@ -136,11 +136,48 @@ IGNORE 1 ROWS
 ```
 
 #### 4. Analysieren Sie nun die Daten. Was bedeuten die Felder _p25, _p50, _p75? 
+
+![Daten](https://github.com/user-attachments/assets/e094ee73-7583-4602-849f-207ef827c4f5)
+
+Die Daten Stellen die verschiedenen Tarife auf.
+
+| Quartier      | Tarif              | p25  | p50   | p75   | Interpretation                              |
+|---------------|--------------------|------|-------|-------|----------------------------------------------|
+| Rathaus       | Grundtarif         | 18.7 | 39.9  | 65.2  | Moderate Einkommen, breite Verteilung        |
+| Hochschulen   | Verheiratetentarif | 52   | 89.2  | 178.7 | Viel höhere Einkommen, große Streuung        |
+| Langstrasse   | Einelternfamilie   | 15.8 | 30.05 | 46    | Geringe Einkommen, relativ kompakt           |
+
+
 #### 5. Lösen Sie folgende Fragen: 
 **a.	Ermitteln Sie das Quartier mit maximalem Steuereinkommen für _p75?**
+
+```
+SELECT quarlang AS Quartier, tariflang AS Tarif, SteuerEinkommen_p75
+FROM steuern
+WHERE SteuerEinkommen_p75 IS NOT NULL
+ORDER BY SteuerEinkommen_p75 DESC
+LIMIT 1;
+```
+
 **b.	Welches Quartier hat das niedrigste Steuereinkommen für _p50?**
+
+```
+SELECT quarlang AS Quartier, tariflang AS Tarif, SteuerEinkommen_p50
+FROM steuern
+WHERE SteuerEinkommen_p50 IS NOT NULL
+ORDER BY SteuerEinkommen_p50 ASC
+LIMIT 1;
+```
+
 **c.	Welches Quartier hat das höchste Steuereinkommen für _p50?**
+
+```
+SELECT quarlang AS Quartier, tariflang AS Tarif, SteuerEinkommen_p50
+FROM steuern
+WHERE SteuerEinkommen_p50 IS NOT NULL
+ORDER BY SteuerEinkommen_p50 DESC
+LIMIT 1;
+```
 
 #### 6. Erstellen Sie ein Backup dar Datenbank.
 
-![Image](https://github.com/user-attachments/assets/e094ee73-7583-4602-849f-207ef827c4f5)
