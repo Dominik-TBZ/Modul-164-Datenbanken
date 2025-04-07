@@ -2,7 +2,7 @@
 
 ## Tag 8
 
-### Auftrag Recap  
+### Auftrag Daten normalisiert einbinden  
 🔗 [GitLab Link zu Daten normalisiert einbinden](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/7.Tag?ref_type=heads)
 
 #### 7. Erzeugen Sie weitere 290 Datensätze an SchülerInnen (Name, Geb.datum, Klassennummer, Freifachnummer) mit einem Testdatengenerator 8. (evtl. geeignete Datenwerte anpassen, bzw. durchmischen in EXCEL). Führen Sie die obigen Schritte von Punkt 4,5 und 6 erneut durch.
@@ -63,3 +63,84 @@ WHERE Freifach.Beschreibung IN ('Chor', 'Elektronik');
 ```
 "C:\xampp\mysql\bin\mysqldump.exe" -u root -p schule > "C:\Users\dominik.willisch.sch\Documents\Berufsschule (TBZ)\Modul 164; Datenbank erstellen\Prüfungsvorbereitung LB2\schueler_backup.sql"
 ```
+
+### Auftrag Steuerdaten  
+🔗 [GitLab Link zu dem Auftrag Steuerdaten](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/8.Tag?ref_type=heads)
+
+#### 1. Analysieren Sie die CSV-Datei und normalisieren Sie wo nötig.
+Ich habe mir die verschiedenen Spalten angeschaut und mir ein Bild der Datenbank gemacht.
+#### 2. Identifizieren Sie die Attribute und legen Sie die Datentypen fest. Bereinigen sie die Quelldatei (1.NF, Überflüssige Daten raus).
+
+```
+create table steuern (
+
+stichtag int,
+
+sort int,
+
+cd varchar(5),
+
+quarlang varchar(255),
+
+tarifsort int,
+
+tarifcd varchar(5),
+
+tariflang varchar(255),
+
+SteuerEinkommen_p50 decimal(5,2),
+
+SteuerEinkommen_p25 decimal(5,2),
+
+SteuerEinkommen_p75 decimal(5,2)
+```
+
+#### 3. Erstellen Sie ein phys. ERD mit dem dazugehörigen DDL-Script. Importieren Sie nun die Steuerdaten in die Datenbank per Bulkimport. Schreiben Sie ein DML Skript.
+
+![ERD](https://github.com/user-attachments/assets/5822bd4e-036a-4788-b7a8-abecac4c0266)
+
+```
+DROP DATABASE IF EXISTS steuern;
+CREATE DATABASE steuern;
+USE steuern;
+
+create table steuern (
+
+stichtag int,
+
+sort int,
+
+cd varchar(5),
+
+quarlang varchar(255),
+
+tarifsort int,
+
+tarifcd varchar(5),
+
+tariflang varchar(255),
+
+SteuerEinkommen_p50 decimal(5,2),
+
+SteuerEinkommen_p25 decimal(5,2),
+
+SteuerEinkommen_p75 decimal(5,2)
+);
+ 
+LOAD DATA LOCAL INFILE 'C:/steuerdaten.csv'
+INTO TABLE steuern
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS 
+(stichtag, sort, cd, quarlang, tarifsort, tarifcd, tariflang, SteuerEinkommen_p50, SteuerEinkommen_p25, SteuerEinkommen_p75);
+```
+
+#### 4. Analysieren Sie nun die Daten. Was bedeuten die Felder _p25, _p50, _p75? 
+#### 5. Lösen Sie folgende Fragen: 
+**a.	Ermitteln Sie das Quartier mit maximalem Steuereinkommen für _p75?**
+**b.	Welches Quartier hat das niedrigste Steuereinkommen für _p50?**
+**c.	Welches Quartier hat das höchste Steuereinkommen für _p50?**
+
+#### 6. Erstellen Sie ein Backup dar Datenbank.
+
+![Image](https://github.com/user-attachments/assets/e094ee73-7583-4602-849f-207ef827c4f5)
