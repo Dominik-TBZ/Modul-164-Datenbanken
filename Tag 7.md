@@ -142,18 +142,15 @@ CREATE TABLE Lehrer_Freifach (
 );
 ```
 
-![Image](https://github.com/user-attachments/assets/152acf90-68c1-4225-b902-7eddde411d75)
-![Image](https://github.com/user-attachments/assets/dea7ba60-b4cf-4849-9285-dc6654ada831)
 ![Image](https://github.com/user-attachments/assets/d69399d3-7087-456c-a17a-478bd121a66a)
-![Image](https://github.com/user-attachments/assets/93a75bea-a41a-444a-9a35-ea7cdabc5da2)
 
 #### 1. Erstellen Sie die erste Normalform der EXCEL-Tabelle und exportieren Sie die Daten als CSV-Dateien. (Atomare Felder, Redundanz wird bewusst erzeugt).
 
-
+![CSV - Dateien](https://github.com/user-attachments/assets/6e911612-2bf2-4481-b2ce-1b18c6df4233)
 
 #### 2. Erstellen Sie das log. ERD. Die (5) Tabellen müssen mind. in der 2.NF sein. Bestimmen Sie die Kardinalitäten.
 
-
+![Datenmodell](https://github.com/user-attachments/assets/93a75bea-a41a-444a-9a35-ea7cdabc5da2)
 
 #### 3. Erstellen Sie das physische ERD und setzen Sie die ersichtlichen, nötigen NN- und UQ-Eigenschaften (Constraints) bei den Attributen und Fremdschlüsseln. Erzeugen Sie durch z.B. Forward Engineering ein SQL-DDL-Script (Datentypen, FK-Constriants, Constaint-Optionen).
 
