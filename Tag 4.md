@@ -56,9 +56,10 @@
 #### Warum gibt die folgende Abfrage kein sinnvolles Ergebnis?  
 
 **SQL-Befehl:**  
+```
 SELECT * FROM kunden  
 INNER JOIN orte;  
-
+```
 **Erklärung:**  
 Diese Abfrage führt zu einem **kartesischen Produkt**, da keine **JOIN-Bedingung** angegeben wurde.  
 Jede Zeile der Tabelle `kunden` wird mit jeder Zeile der Tabelle `orte` kombiniert, was zu fehlerhaften Zuordnungen führt.  
@@ -66,67 +67,75 @@ Jede Zeile der Tabelle `kunden` wird mit jeder Zeile der Tabelle `orte` kombinie
 Die **korrekte Variante** ist:  
 
 **SQL-Befehl:**  
+```
 SELECT * FROM kunden  
 INNER JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl;  
-
+```
 #### **Einfache Abfragen über zwei Tabellen**
 
 ##### **a) Geben Sie Name, Postleitzahl und Wohnort aller Kunden aus.**  
 
 **SQL-Befehl:**  
+```
 SELECT kunden.name, kunden.fk_ort_postleitzahl, orte.name  
 FROM kunden  
 JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl;  
-
+```
 ##### **b) Geben Sie Name und Wohnort aller Kunden aus, die die Postleitzahl 79312 haben.**  
 
 **SQL-Befehl:**  
+```
 SELECT kunden.name, orte.name  
 FROM kunden  
 JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl  
 WHERE kunden.fk_ort_postleitzahl = '79312';
-
+```
 ##### **c) Geben Sie Name und Wohnort aller Kunden aus, die in Emmendingen wohnen.**  
 *(Einschränkungskriterium ist NICHT die Postleitzahl, sondern 'Emmendingen')*  
 
 **SQL-Befehl:**  
+```
 SELECT kunden.name, orte.name  
 FROM kunden  
 JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl  
 WHERE orte.name = 'Emmendingen';
+```
 
 ##### **d) Geben Sie Name, Wohnort und Einwohnerzahl für alle Kunden aus, die in einem Ort mit mehr als 70.000 Einwohnern wohnen.**  
 
 **SQL-Befehl:**  
+```
 SELECT kunden.name, orte.name, orte.einwohnerzahl  
 FROM kunden  
 JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl  
 WHERE orte.einwohnerzahl > 70000;  
-
+```
 ##### **e) Geben Sie alle Orte aus, die weniger als 1.000.000 Einwohner haben.**  
 
 **SQL-Befehl:**  
+```
 SELECT name  
 FROM orte  
 WHERE einwohnerzahl < 1000000;  
+```
 
 ##### **f) Geben Sie Kundename und Ortname aus für alle Kunden, die in Orten mit einer Einwohnerzahl zwischen 100.000 und 1.500.000 leben.**  
 
 **SQL-Befehl:**  
+```
 SELECT kunden.name, orte.name  
 FROM kunden  
 JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl  
 WHERE orte.einwohnerzahl BETWEEN 100000 AND 1500000;  
+```
 
 ##### **g) Geben Sie Kundename, Postleitzahl und Ortname aus für alle Kunden, deren Name ein "e" enthält und alle Orte, die ein "u" oder ein "r" enthalten.**  
 
 **SQL-Befehl:**  
+```
 SELECT kunden.name, kunden.fk_ort_postleitzahl, orte.name  
 FROM kunden  
 JOIN orte ON kunden.fk_ort_postleitzahl = orte.id_postleitzahl  
 WHERE kunden.name LIKE '%e%'  
 AND (orte.name LIKE '%u%' OR orte.name LIKE '%r%');  
-
-
-### Auftrag Join 2
-🔗 [GitLab Link zu Join 2](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/4.Tag/Auftrag_select_join_Fortgeschrittene.md)
+```
