@@ -60,10 +60,10 @@ In professionellen Datenbanksystemen wird das **Löschen** von Datensätzen (z. 
 | **Regel**                          | **Beschreibung**                                                                                                                                                   |
 |------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **ON DELETE NO ACTION (RESTRICT)** | Ein `DELETE` in der Primärtabelle ist nur möglich, wenn keine verknüpften Detail-Datensätze existieren. (Standard, falls nichts anderes angegeben)               |
-| **ON DELETE CASCADE**              | Das Löschen in der Primärtabelle führt zum automatischen Löschen aller zugehörigen Detail-Datensätze. ⚠️ (Vorsicht: Daten können unbeabsichtigt komplett verschwinden!) |
-| **ON DELETE SET NULL (DEFAULT)**   | Beim Löschen in der Primärtabelle wird der Fremdschlüssel in der Detailtabelle auf `NULL` oder einen Default-Wert gesetzt. (Nur möglich, wenn `NULL` erlaubt ist)   |
+| **ON DELETE CASCADE**              | Das Löschen in der Primärtabelle führt zum automatischen Löschen aller zugehörigen Detail-Datensätze.                                                   |
+| **ON DELETE SET NULL (DEFAULT)**   | Beim Löschen in der Primärtabelle wird der Fremdschlüssel in der Detailtabelle auf `NULL` oder einen Default-Wert gesetzt.                                          |
  
-> **Fazit**: In den meisten Fällen ist es **sinnvoller**, Datensätze zu **historisieren** oder als **inaktiv** zu kennzeichnen, anstatt sie komplett aus der Datenbank zu löschen. So bleibt die **historische Information** erhalten und es gehen keine **wertvollen Daten** verloren. ✨
+**Fazit**: In den meisten Fällen ist es **sinnvoller**, Datensätze zu **historisieren** oder als **inaktiv** zu kennzeichnen, anstatt sie komplett aus der Datenbank zu löschen. So bleibt die **historische Information** erhalten und es gehen keine **wertvollen Daten** verloren. ✨
 
 #### 📚 Datenbank-Lernnotizen  
 
@@ -83,11 +83,11 @@ Wichtige Mechanismen zur Wahrung der Integrität:
 
 ##### 🔄 FK-Constraint-Options  
 Fremdschlüssel (FK) regeln, wie abhängige Daten bei Änderungen behandelt werden:  
-- `CASCADE` 🔄 → Änderungen/Löschungen vererben sich  
-- `SET NULL` 🚫 → Setzt FK-Wert auf NULL, falls möglich  
-- `SET DEFAULT` 🎯 → Setzt FK-Wert auf einen Standardwert  
-- `RESTRICT` ❌ → Verhindert Löschung, wenn abhängige Daten existieren  
-- `NO ACTION` 🏁 → Wie `RESTRICT`, aber mit verzögerter Prüfung
+- `CASCADE` → Änderungen/Löschungen vererben sich  
+- `SET NULL` → Setzt FK-Wert auf NULL, falls möglich  
+- `SET DEFAULT` → Setzt FK-Wert auf einen Standardwert  
+- `RESTRICT` → Verhindert Löschung, wenn abhängige Daten existieren  
+- `NO ACTION` → Wie `RESTRICT`, aber mit verzögerter Prüfung
 
 ### Referentielle Datenintegrität
 🔗 [GitLab Link zum Löschen von Daten](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/Referentielle_Datenintegritaet.md)
@@ -163,7 +163,7 @@ DELETE FROM tbl_orte WHERE ID_Ort = 5;
 ```
 
 ##### 🎯 Fazit  
-Dank dieser schrittweisen Anpassung bleibt die referentielle Integrität der Datenbank erhalten, und der Fehler in den Ortsdaten wurde erfolgreich korrigiert. 🚀
+Dank dieser schrittweisen Anpassung bleibt die referentielle Integrität der Datenbank erhalten, und der Fehler in den Ortsdaten wurde erfolgreich korrigiert.
 
 ### SELECT Alias
 🔗 [GitLab Link zu SELECT Alias](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/SELECT_ALIAS.md)
@@ -198,6 +198,7 @@ WHERE k.name LIKE '%a%'
   AND o.name LIKE '%u%' 
   AND k.ort_postleitzahl = o.postleitzahl;
 ```
+
 ### Aggregatsfunktionen
 🔗 [GitLab Link zu den Aggregatsfunktionen](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/Aggregatsfunktionen.md)
 
@@ -253,6 +254,7 @@ SELECT COUNT(*) AS Anzahl_russischer_Schueler_Zelawat  FROM Schueler  WHERE Lehr
 ``` 
 SELECT Name, Gehalt FROM Lehrer WHERE Gehalt = (SELECT MAX(Gehalt) FROM Lehrer);
 ```
+
 ### SELECT GROUP BY
 🔗 [GitLab Link zu SELECT GROUP BY](https://gitlab.com/ch-tbz-it/Stud/m164/-/blob/main/5.Tag/select_group_by.md)
 
@@ -304,7 +306,6 @@ ORDER BY Schülername, Lehrer;
 **Aufgabe**  
 Liste alle Einträge für `tierart = 'Schafe [Anz.]'` und `jahr = 2018`, sortiere in **absteigender** Reihenfolge (`DESC`) nach `gebiet_name`.
  
-**Lösung**  
 ```sql
 SELECT *
 FROM nutztiere
@@ -316,10 +317,8 @@ ORDER BY gebiet_name DESC;
 ## 2. Gesamte Anzahl Schafe im Jahr 2018
  
 **Aufgabe**  
-Berechne die gesamte Anzahl Schafe (tierart = 'Schafe [Anz.]') für das Jahr 2018.
- 
-**Lösung**  
- 
+Berechne die gesamte Anzahl Schafe (tierart = 'Schafe [Anz.]') für das Jahr 2018. 
+
 ```sql
 SELECT SUM(anzahl) AS gesamt_schafe_2018
 FROM nutztiere
@@ -330,9 +329,7 @@ WHERE tierart = 'Schafe [Anz.]'
  
 **Aufgabe**  
 Berechne den Durchschnitt (AVG()) der Kühe (tierart = 'Kühe [Anz.]') in der Region Zürich (gebiet_name = 'Region Zürich'), über alle Jahre hinweg.
- 
-**Lösung**  
- 
+
 ```sql
 SELECT AVG(anzahl) AS avg_kuehe_region_zuerich
 FROM nutztiere
@@ -345,9 +342,7 @@ WHERE tierart = 'Kühe [Anz.]'
  
 **Aufgabe**  
 Bestimme die grösste Anzahl (MAX()) an Kühen (tierart = 'Kühe [Anz.]') in der Region Zürich.
- 
-**Lösung**  
- 
+
 ```sql
  
 SELECT MAX(anzahl) AS max_kuehe_region_zuerich
@@ -360,9 +355,7 @@ WHERE tierart = 'Kühe [Anz.]'
  
 **Aufgabe**  
 Bestimme die kleinste Anzahl (MIN()) an Kühen (tierart = 'Kühe [Anz.]') in der Region Zürich.
- 
-**Lösung**  
- 
+
 ```sql
 SELECT MIN(anzahl) AS min_kuehe_region_zuerich
 FROM nutztiere
@@ -374,9 +367,7 @@ WHERE tierart = 'Kühe [Anz.]'
  
 **Aufgabe**  
 Summiere die Anzahl aller Nutztiere (unabhängig von der Tierart) pro Region, aber nur für das Jahr 2016.
- 
-**Lösung**  
- 
+
 ```sql
 SELECT gebiet_name,
        SUM(anzahl) AS summe_nutztiere_2016
@@ -389,9 +380,7 @@ GROUP BY gebiet_name;
  
 **Aufgabe**  
 Summiere die Anzahl aller Nutztiere pro Region und pro Jahr über den gesamten Zeitraum.
- 
-**Lösung**  
- 
+
 ```sql
  
 SELECT gebiet_name,
@@ -405,9 +394,7 @@ GROUP BY gebiet_name, jahr;
  
 **Aufgabe**  
 Erweitere die vorige Abfrage und sortiere die Ergebnisse nach dem Jahr (ORDER BY jahr).
- 
-**Lösung**  
- 
+
 ```sql
  
 SELECT gebiet_name,
@@ -422,9 +409,7 @@ ORDER BY jahr;
  
 **Aufgabe**  
 Gib nur die Jahre ab 2015 (jahr >= 2015) aus. Summiere die Anzahl Nutztiere pro Region, gruppiere nach Region und Jahr und sortiere das Ergebnis nach dem Jahr.
- 
-**Lösung**  
- 
+
 ```
 sql
 SELECT gebiet_name,

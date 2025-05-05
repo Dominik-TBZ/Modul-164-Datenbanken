@@ -10,10 +10,10 @@
 #### Aufgabe 1
  
 ##### Gegebene Mengen:
-- **A** = { c, e, z, r, d, g, u, x }  
-- **B** = { c, e, g }  
-- **C** = { r, d, g, t }  
-- **D** = { e, z, u }  
+- **A** = { c, e, z, r, d, g, u, x }
+- **B** = { c, e, g }
+- **C** = { r, d, g, t }
+- **D** = { e, z, u }
 - **E** = { z, r, u }
  
 ##### Aussagen prüfen:
@@ -37,7 +37,7 @@
  
 - **a)** A ∩ B = { 2, 5 }
 - **b)** A ∪ C = { 1, 2, 3, 4, 5, 7, 9 }
-- **c)** Komplement von B bezüglich A = { 1, 3, 4 }
+- **c)** B ∖ C = {2}
 - **d)** B \ C = { 2 }
 - **e)** C \ B = { 3, 7, 9 }
  
@@ -61,8 +61,8 @@ SELECT * FROM kunden
 INNER JOIN orte;  
 ```
 **Erklärung:**  
-Diese Abfrage führt zu einem **kartesischen Produkt**, da keine **JOIN-Bedingung** angegeben wurde.  
-Jede Zeile der Tabelle `kunden` wird mit jeder Zeile der Tabelle `orte` kombiniert, was zu fehlerhaften Zuordnungen führt.  
+Weil keine Bedingung angegeben ist, wie die Tabellen kunden und orte verbunden werden sollen.
+Dadurch wird jeder Kunde mit jedem Ort kombiniert – auch wenn sie nichts miteinander zu tun haben. Das ergibt viele falsche Kombinationen.
 
 Die **korrekte Variante** ist:  
 

@@ -61,7 +61,7 @@ In diesem Beispiel teilen die Entitäten `Mitarbeiter` und `Kunde` einige Attrib
 
 In relationalen Datenbanken gibt es verschiedene Arten von **Beziehungen**, die Entitäten miteinander verbinden. Diese Beziehungen beschreiben, wie Tabellen miteinander verknüpft sind und wie Daten aus einer Tabelle auf Daten in einer anderen Tabelle zugreifen können. Es gibt drei Hauptarten von Beziehungen:
 
-##### 1. **1:1-Beziehung (One-to-One)**
+##### 1. **1:1-Beziehung**
 
 Eine **1:1-Beziehung** tritt auf, wenn eine Entität in einer Tabelle genau mit einer Entität in einer anderen Tabelle verbunden ist. Das bedeutet, dass für jedes Element der ersten Tabelle genau ein zugehöriges Element in der zweiten Tabelle existiert.
 
@@ -70,7 +70,7 @@ Eine **1:1-Beziehung** tritt auf, wenn eine Entität in einer Tabelle genau mit 
   - Jede Person hat genau einen Pass, und jeder Pass ist einer bestimmten Person zugeordnet.
   - **Person** (ID, Name) <-> **Pass** (Passnummer, PersonID)
 
-##### 2. **1:n-Beziehung (One-to-Many)**
+##### 2. **1:n-Beziehung**
 
 Eine **1:n-Beziehung** tritt auf, wenn eine Entität in einer Tabelle mit mehreren Entitäten in einer anderen Tabelle verbunden ist, jedoch jede Entität der zweiten Tabelle nur einer Entität der ersten Tabelle zugeordnet ist. Eine Entität in der ersten Tabelle (die "1"-Seite) kann also viele zugehörige Entitäten in der zweiten Tabelle (die "n"-Seite) haben.
 
@@ -79,7 +79,7 @@ Eine **1:n-Beziehung** tritt auf, wenn eine Entität in einer Tabelle mit mehrer
   - Eine Person kann mehrere Kundenbeziehungen haben, aber jeder Kunde ist nur einer Person zugeordnet.
   - **Person** (ID, Name) <-> **Kunde** (Kundennummer, Name, PersonID)
 
-##### 3. **n:m-Beziehung (Many-to-Many)**
+##### 3. **n:m-Beziehung**
 
 Eine **n:m-Beziehung** tritt auf, wenn mehrere Entitäten in einer Tabelle mit mehreren Entitäten in einer anderen Tabelle verbunden sind. Das bedeutet, dass für jede Entität der ersten Tabelle mehrere Entitäten in der zweiten Tabelle existieren können und umgekehrt.
 
@@ -142,19 +142,11 @@ Ein reguläres Dateisystem ist in manchen Fällen sinnvoll, z. B. wenn kein Mehr
 | Cache         | InterSystems | hierarchisch, “postrelational” |
 | DB2           | IBM          | objektrelational |
 | Firebird      | –            | relational, basierend auf InterBase |
-| IMS           | IBM          | hierarchisch, Mainframe-DBMS |
-| Informix      | IBM          | objektrelational |
-| InterBase     | Borland      | relational |
 | MS Access     | Microsoft    | relational, Desktop-System |
 | MS SQL Server | Microsoft    | objektrelational |
 | MySQL         | MySQL AB     | relational |
 | Oracle        | ORACLE       | objektrelational |
 | PostgreSQL    | –            | objektrelational, hervorgegangen aus Ingres und Postgres |
-| Sybase ASE    | Sybase       | relational |
-| Versant       | Versant      | objektorientiert |
-| Visual FoxPro | Microsoft    | relational, Desktop-System |
-| Teradata      | NCR Teradata | relationales Hochleistungs-DBMS, speziell für Data Warehouses |
-
 
 ![Mindmap](https://github.com/user-attachments/assets/d30858a1-ce2f-427d-b69b-d8dfb63150d4)
 
@@ -165,10 +157,10 @@ Ein reguläres Dateisystem ist in manchen Fällen sinnvoll, z. B. wenn kein Mehr
 
 ##### 1. **ASCII (Veraltet)** 
 - 7-Bit codiert, ca. 32 Steuerzeichen & 96 druckbare Zeichen
-- Fokus auf englische Sprache 🇬🇧
+- Fokus auf englische Sprache
 
 ##### 2. **ANSI (ISO-8859)**
-- ISO-8859-1 (Latin1) für Westeuropa 🇩🇪🇫🇷
+- ISO-8859-1 (Latin1) für Westeuropa
 - Deckt alle ASCII-Zeichen ab und erweitert mit 96 internationalen Zeichen via Codepages
 
 ##### 3. **Unicode (UCS)**

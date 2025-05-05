@@ -102,15 +102,13 @@ HAVING durchschnittsgewinn < 10;
  
 ##### MySQL/MariaDB: Daten schnell und effizient aus CSV-Dateien importieren
  
-Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` (clientseitig) lassen sich CSV-Dateien sehr performant in MySQL-/MariaDB-Tabellen laden. Im Folgenden sind die wichtigsten Hinweise, Einstellungen und ein kurzes Beispiel-Tutorial zusammengefasst.
-
----
+Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` (clientseitig) lassen sich CSV-Dateien sehr effiziennt in MySQL-/MariaDB-Tabellen laden. Im Folgenden sind die wichtigsten Hinweise, Einstellungen und ein kurzes Beispiel-Tutorial zusammengefasst.
 
 ###### 1. Unterschiede: Serverseitiger vs. Clientseitiger Import
  
 ###### Serverseitig: `LOAD DATA INFILE`
 - **Syntax-Beispiel**:
-  ```sql
+  ```
   LOAD DATA INFILE '/Pfad/zur/datei.csv'
   INTO TABLE deine_tabelle
   FIELDS TERMINATED BY ','
@@ -118,7 +116,7 @@ Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` 
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES
   (spalte1, spalte2, …);
- 
+```
  
 **Zusammenfassung:**  
 - **LOAD DATA INFILE** (ohne LOCAL) lädt eine CSV-Datei vom Server-Dateisystem in MySQL/MariaDB.  
@@ -190,7 +188,7 @@ Mit den Befehlen `LOAD DATA INFILE` (serverseitig) und `LOAD DATA LOCAL INFILE` 
 
 #### 1. **Leere Felder und Datumsformat anpassen**
 
-```sql
+```
 SET FOREIGN_KEY_CHECKS=0;
 Truncate tbl_Beispiel;
 
@@ -211,7 +209,7 @@ In dieser Aufgabe wird das Datumsformat in der CSV-Datei mit der Funktion STR_TO
 
 #### 2. **Spaltenreihenfolge ändern**
 
-```sql
+```
 Kopieren
 Truncate tbl_Beispiel; -- Leert Tabelle
 
@@ -232,7 +230,7 @@ Die Reihenfolge der Spalten in der CSV-Datei stimmt nicht mit der Reihenfolge de
 
 ### 3. **Spalten auslassen**
 
-```sql
+```
 LOAD DATA LOCAL INFILE 'C:/M164/bsp3.csv'
 REPLACE
 INTO TABLE tbl_Beispiel
@@ -250,7 +248,7 @@ In diesem Beispiel überspringen wir bestimmte Spalten der CSV-Datei, indem wir 
 
 ### 4. **Attribut hinzufügen**
 
-```sql
+```
 Kopieren
 LOAD DATA LOCAL INFILE 'C:/M164/bsp4.csv'
 REPLACE
@@ -269,7 +267,7 @@ Hier wird ein fehlendes Attribut FS hinzugefügt, indem es für jede Zeile auf 1
 
 ### 5. **Werte ändern**
 
-```sql
+```
 LOAD DATA LOCAL INFILE 'C:/M164/bsp5.csv'
 REPLACE
 INTO TABLE tbl_Beispiel

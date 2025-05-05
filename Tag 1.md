@@ -15,7 +15,7 @@ Die **Wissenstreppe** beschreibt den Prozess der Transformation von Daten zu Wis
 4. **Wissen** – Informationen mit Kontext, z. B. `Der Wechselkurs schwankt täglich`.  
 5. **Können** – Wissen, das in Fähigkeiten umgesetzt wird, z. B. `Ich kann Wechselkurse analysieren`.  
 6. **Handeln** – Bewusstes Anwenden von Wissen und Können, z. B. `Ich tausche Geld zum besten Zeitpunkt`.  
-7. **Kompetenz** – Nachhaltige, reflektierte Handlungskompetenz, z. B. `Ich bin Devisenhändler und treffe fundierte Entscheidungen`.
+7. **Kompetenz** – Nachhaltige, reflektierte Handlungskompetenz, z. B. `Ich bin Händler und treffe fundierte Entscheidungen`.
 
 #### 2. Netzwerk-Beziehungen im logischen Modell
 
