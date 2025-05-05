@@ -11,10 +11,12 @@ Eine **CTE (Common Table Expression)** ist eine **Zwischentabelle**, die man mit
 Sie hilft dabei, **komplizierte Abfragen** übersichtlicher zu machen.  
 CTEs sind **nur vorübergehend** – sie gelten nur während der Abfrage.
  
-Vorteile:
+#### Vorteile:
 - Klarer und besser lesbarer SQL-Code  
 - Kein mehrfaches Schreiben derselben Abfrage  
 - Bessere Struktur bei komplexen Datenabfragen
+
+#### Beispiel
 
 ```
 DROP DATABASE IF EXISTS Autoladen;
@@ -83,7 +85,7 @@ SELECT * FROM BMWVerkaeufer;
 🔗 [GitLab Link zu Stored Procedures](https://gitlab.com/ch-tbz-it/Stud/m164/-/tree/main/9.Tag?ref_type=heads)
  
 #### 🧠 Was ist eine Stored Procedure?
-Eine Stored Procedure ist ein in der Datenbank gespeichertes, vordefiniertes SQL-Programm, das beliebig oft aufgerufen werden kann, um wiederkehrende Aufgaben zentral auszuführen.
+Eine Stored Procedure ist ein in der Datenbank gespeichertes, vordefiniertes SQL-Programm, das beliebig oft aufgerufen werden kann, um wiederkehrende Aufgaben zentral auszuführen. Es ist wie im klassischen Programmieren eine "Methode" welche man beliebig oft und mit Parametern aufrufen kann.
  
 #### Vorteile
 - **Wiederverwendbarkeit** – einmal erstellt, stets ohne Neuschreiben aufrufbar  
@@ -96,7 +98,7 @@ Eine Stored Procedure ist ein in der Datenbank gespeichertes, vordefiniertes SQL
 2. `BEGIN … SQL-Befehle … END;`  
 3. Aufruf mit `CALL ProcedureName(args);`
  
-#### Beispiel (MySQL)
+#### Beispiel
 ```
 DELIMITER $$
  
