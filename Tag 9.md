@@ -46,20 +46,17 @@ CREATE TABLE Verkauf (
     FOREIGN KEY (VerkaeuferID) REFERENCES Verkaeufer(VerkaeuferID)
 );
  
--- Autos
 INSERT INTO Auto VALUES
 (1, 'BMW', '3er', 2018, 23000.00),
 (2, 'Audi', 'A4', 2019, 25000.00),
 (3, 'VW', 'Golf', 2016, 15000.00),
 (4, 'Tesla', 'Model 3', 2021, 35000.00);
  
--- Verkäufer
 INSERT INTO Verkaeufer VALUES
 (1, 'Max Müller', 'Zürich'),
 (2, 'Anna Schmidt', 'Bern'),
 (3, 'Lukas Weber', 'Basel');
  
--- Verkäufe
 INSERT INTO Verkauf VALUES
 (1, 1, 1, '2024-06-10'),
 (2, 2, 2, '2024-07-15'),
@@ -100,16 +97,36 @@ Eine Stored Procedure ist ein in der Datenbank gespeichertes, vordefiniertes SQL
  
 #### Beispiel
 ```
+DROP DATABASE IF EXISTS Firma;
+CREATE DATABASE Firma;
+USE Firma;
+
+CREATE TABLE Kunden (
+    KundenID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Adresse VARCHAR(200),
+    Telefon VARCHAR(20)
+);
+
+INSERT INTO Kunden VALUES
+(1, 'Max Meier', 'Bahnhofstrasse 10, Zürich', '044 123 45 67'),
+(2, 'Anna Müller', 'Hauptstrasse 5, Bern', '031 987 65 43'),
+(3, 'Lukas Steiner', 'Seestrasse 8, Luzern', '041 555 44 33');
+
 DELIMITER $$
- 
+
 CREATE PROCEDURE GetKundendaten(IN kunden_id INT)
 BEGIN
     SELECT Name, Adresse, Telefon
     FROM Kunden
     WHERE KundenID = kunden_id;
 END $$
- 
+
 DELIMITER ;
 
 CALL GetKundendaten(1);
 ```
+
+### Abschluss
+
+Nun ist das Modul zuende. Ich habe dieses Modul sehr spannend gefunden, ich habe sehr vieles neu gelernt. In der Firma ist SQL eher weniger das Thema, wehalb das alles neu für mich war. Mit dem Modul und dem gleichzeitigen ÜK bin ich doch gut reingekommen und weiss jetzt viel mehr, als noch im Winter.
